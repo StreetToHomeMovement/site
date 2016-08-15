@@ -163,9 +163,48 @@ header {
   letter-spacing: .019em
 }
 
+.donate {
+  padding: 5%;
+  background-color: rgb(215, 215, 235)
+}
+
+.donate h2 {
+  font-size: 48rem;
+  font-weight: normal;
+  line-height: 1em;
+  margin-bottom: 28rem;
+}
+
+.donate p {
+  font-size: 18rem;
+  line-height: 1.5em;
+  letter-spacing: .019em
+}
+
+.donate a {
+  font-size: 18rem;
+  line-height: 1.5em;
+  letter-spacing: .019em
+}
+
 .placeholder {
   background-image: url('placeholder.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%
+}
+
+/*Darren adding everything below this temporarily
+just to text is visible during testing */
+
+.login > h1,h2,label {
+  /* for scaleable fonts via em/rem where 1rem = 1px */
+  font-size: 18rem;
+  font-family: kepler-std-display,serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  font-smoothing: antialiased
 }
