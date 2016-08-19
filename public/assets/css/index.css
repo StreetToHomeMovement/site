@@ -215,3 +215,25 @@ just to text is visible during testing */
   background-size: cover;
   background-position: 50% 50%
 }
+
+.signin {
+  font-size: 20rem;
+  line-height: 1.5em;
+  letter-spacing: .019em;
+  border-style: groove;
+  color: rgb(244, 244, 244);
+  padding: 3px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-style: ridge;
+  border-radius: 4px;
+  border-width: medium;
+  border-color: rgb(244, 244, 244);
+  margin: 15px;
+}
+
+.signin:hover, .signin:active {
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255)
+}

@@ -21,6 +21,7 @@
     "express": "^4.14.0"
   },
   "devDependencies": {
+    "cookie-parser": "^1.4.3",
     "parse-server": "^2.2.17"
   }
 }

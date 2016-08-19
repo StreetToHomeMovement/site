@@ -31,14 +31,20 @@
     <div id="content">
       <div class="scene">
         <section id="intro" class="container">
-            <div class="box">
-              <h1>Street to Home Movement</h1>
-              <h2>Ending chronic street homelessness in southern Brevard County, Florida</h2>
-              <svg id="scroll-indicator" width="10px" height="45px">
-                <polygon points="4,0 6,0 6,40 10,40 5,45 0,40 4,40" fill="#ffffff"></polygon>
-              </svg>
-            </div>
+          <div class="box">
+            <h1>Street to Home Movement</h1>
+            <h2>Ending chronic street homelessness in southern Brevard County, Florida</h2>
+            <svg id="scroll-indicator" width="10px" height="45px">
+              <polygon points="4,0 6,0 6,40 10,40 5,45 0,40 4,40" fill="#ffffff"></polygon>
+            </svg>
           </div>
+          <ul style="list-style-type:none">
+            <li>
+              <a class="signin" href="/user">
+                <%= firstname || 'Signin' %>
+              </a>
+            </li>
+          </ul>
         </section>
         <section id="mission" class="container">
           <div class="box">
