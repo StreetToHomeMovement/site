@@ -221,19 +221,82 @@ just to text is visible during testing */
   line-height: 1.5em;
   letter-spacing: .019em;
   border-style: groove;
-  color: rgb(244, 244, 244);
+  color: rgb(222, 222, 222);
   padding: 3px 14px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   border-style: ridge;
   border-radius: 4px;
-  border-width: medium;
-  border-color: rgb(244, 244, 244);
+  border-width: thick;
+  border-color: rgb(222, 222, 222);
   margin: 15px;
 }
 
 .signin:hover, .signin:active {
   color: rgb(255, 255, 255);
   border-color: rgb(255, 255, 255)
+}
+
+/* taken from:
+  http://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown
+*/
+
+.dropbtn {
+    font-size: 20rem;
+    line-height: 1.5em;
+    letter-spacing: .019em;
+    border-style: groove;
+    color: rgb(222, 222, 222);
+    padding: 3px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-style: ridge;
+    border-radius: 4px;
+    border-width: thick;
+    border-color: rgb(222, 222, 222);
+    margin: 15px;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255)
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    right: 1.25rem;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 165px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    font-size: 20px;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.show {display:block;}
+
+
+ul {
+    margin:0;
+    list-style-type: none;
+    text-align:center;
+}
+
+ul li {
+    display:inline;
 }

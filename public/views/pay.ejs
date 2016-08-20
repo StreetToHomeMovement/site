@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Street to Home Movement</title>
+    <link href="/public/assets/css/index.css" rel="stylesheet">
+    <script src="https://use.typekit.net/xul5xsx.js"></script>
+    <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
+  </head>
+  <body id="body">
+    <header id="header"></header>
+    <div class="scene">
+      <section id="outreach" class="container">
+        <div class="half text">
+
+
+
+          <div class="payment-card">
+
+              <img src="img/cute.gif" alt="">
+
+              <h2>Want this amazing picture?</h2>
+
+              <form class="pure-form pure-form-stacked " action="/setaccount" method="post">
+                  <fieldset>
+                      <div class="pure-g">
+                          <label class="pure-u-1-3 label" for="amount">Name your price:</label>
+                          <input class="pure-u-2-3" id="amount" class="pure-input-1" name="amount" type="text" placeholder="XX.XX" required>
+                      </div>
+
+                      <br>
+
+                      <div id="checkout"></div>
+
+                      <button type="submit" class="pure-button pure-button-primary">Pay now</button>
+
+                  </fieldset>
+              </form>
+          </div>
+
+          <script src="./public/assets/js/braintree.js"></script>
+          <script>
+              braintree.setup('<%- clientToken %>', 'dropin', {
+                  container: 'checkout'
+              });
+          </script>
+
+
+
+
+
+
+        </div>
+        <div class="half payplaceholder">
+        </div>
+      </section>
+    </div>
+  </body>
+  <script>
+  </script>
+</html>

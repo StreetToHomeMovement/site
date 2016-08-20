@@ -1,0 +1,48 @@
+<html>
+  <style>
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    #forgotpwd {
+      font-size: 14px;
+      float: right
+    }
+
+  </style>
+  <head>
+    <title>Street to Home Movement</title>
+    <link href="/public/assets/css/index.css" rel="stylesheet">
+    <script src="https://use.typekit.net/xul5xsx.js"></script>
+    <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
+  </head>
+  <body id="body">
+    <header id="header"></header>
+    <div class="scene">
+      <section id="outreach" class="container">
+        <div class="half text">
+          <p>
+            Login to your account:
+          </p>
+            <form method="POST" action="/user">
+              <label><b>email</b></label>
+              <input type="text" placeholder="email" name="email" required>
+              <label><b>password</b></label>
+              <input type="password" placeholder="password" name="password" required>
+              <br><br>
+              <input type="submit" value="login">
+              <a id="forgotpwd" href="http://www.whimsicalcyn.com">reset password</a>
+            </form>
+
+        </div>
+        <div class="half payplaceholder"></div>
+      </section>
+    </div>
+  </body>
+  <script>
+  </script>
+</html>

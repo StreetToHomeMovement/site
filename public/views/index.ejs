@@ -38,13 +38,50 @@
               <polygon points="4,0 6,0 6,40 10,40 5,45 0,40 4,40" fill="#ffffff"></polygon>
             </svg>
           </div>
-          <ul style="list-style-type:none">
+
+          <ul id="menu">
+
             <li>
               <a class="signin" href="/user">
                 <%= firstname || 'Signin' %>
               </a>
             </li>
+
+            <li>
+              <div class="dropdown">
+              <a onclick="myFunction()" class="dropbtn">...</a>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="/pay">Sign in</a>
+                  <a href="/pay">New account</a>
+                </div>
+              </div>
+            </li>
+
           </ul>
+
+          <script>
+            /* When the user clicks on the button,
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                  }
+                }
+              }
+            }
+            </script>
+
         </section>
         <section id="mission" class="container">
           <div class="box">
