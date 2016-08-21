@@ -3,8 +3,10 @@ var app = express()
 var port = process.env.PORT || 3000
 var bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-var Parse = require('parse/node')
 var cookieParser = require('cookie-parser')
+var joins = require('./models/joins.js')
+var donations = require('./models/donations.js')
+var users = require('./models/users.js')
 var braintree = require('braintree');
 var passwords = require('./passwords.json')
 var gateway = braintree.connect({
@@ -14,8 +16,6 @@ var gateway = braintree.connect({
 	privateKey:   passwords.braintree.privateKey
 });
 
-Parse.initialize("sukeiran44ka88aj");
-Parse.serverURL = 'https://parse-server-codecraft-x-ample.herokuapp.com/parse';
 
 // Serve static assets from the /public folder
 app.use(cookieParser())
@@ -30,53 +30,40 @@ app.get('/', function(req, res) {
 })
 
 
-app.post('/pay', urlencodedParser, function (request, response) {
+app.post('/pay', urlencodedParser, function (req, res) {
+	// unmangle form post
+	var email = req.body.email
+	var zip = req.body.zip
 
   // set cookies
   var dateIn30Days = new Date(Date.now() + 1000*60*60*24*30)
-  response.cookie('email', request.body.email, { expires: dateIn30Days })
-  response.cookie('zip', request.body.zip, { expires: dateIn30Days })
+  res.cookie('email', email, { expires: dateIn30Days })
+  res.cookie('zip', zip, { expires: dateIn30Days })
 
-  // save to database
-  var Joined = new Parse.Object.extend("joined")
-  var joined = new Joined()
+	// save to db
+	joins.create(email, zip)
 
-	joined.set("email",request.body.email)
-	joined.set("zip",request.body.zip)
+	// generate braintree client token and render html
+	gateway.clientToken.generate({}, function (err, res2) {
+	  res.render(__dirname + '/public/views/pay.ejs', {
+	    clientToken: res2.clientToken
+	  });
 
-	joined.save().then( function success(obj) {
-		  console.log("client joined with id " + obj.id)
-      gateway.clientToken.generate({}, function (err, res) {
-        response.render(__dirname + '/public/views/pay.ejs', {
-          clientToken: res.clientToken
-        });
-      });
-		}, function error(err) {
-			console.error(err)
-		})
-
-
+	});
 
 });
 
 // see this regarding users logging in without re-entering pwd:
 // http://stackoverflow.com/questions/5009685/encoding-cookies-so-they-cannot-be-spoofed-or-read-etc/5009903#5009903
 app.post('/setaccount', urlencodedParser, function(req, res) {
-  // save to database
-  var Donation = new Parse.Object.extend("Donation")
-  var donation = new Donation()
+	var payment_method_nonce = req.body.payment_method_nonce
+	var amount = req.body.amount
 
-	donation.set("payment_method_nonce",req.body.payment_method_nonce)
-	donation.set("amount",req.body.amount)
-  //donation.set("")
-
-	donation.save().then( function success(obj) {
-		  console.log("donation made with id " + obj.id)
-      res.sendFile(__dirname + '/public/views/setaccount.html')
-		}, function error(err) {
-			console.error(err)
-		})
+	donations.create(payment_method_nonce, amount)
+	res.sendFile(__dirname + '/public/views/setaccount.html')
 })
+
+
 
 app.get('/user', function(req, res) {
   if (req.cookies.firstname) {
@@ -90,42 +77,32 @@ app.get('/user', function(req, res) {
   }
 })
 
+
+
 app.post('/user', urlencodedParser, function(req, res) {
   // unmangle form post
-  var firstname = req.body.firstname
-  var lastname = req.body.lastname
+  var fname = req.body.firstname
+  var lname = req.body.lastname
   var password = req.body.password
 
-  // set cookies
+  // set cookies with 30 day expiration date
   var dateIn30Days = new Date(Date.now() + 1000*60*60*24*30)
-  res.cookie('firstname', firstname, { expires: dateIn30Days })
-  res.cookie('lastname', lastname, { expires: dateIn30Days })
+  res.cookie('firstname', fname, { expires: dateIn30Days })
+  res.cookie('lastname', lname, { expires: dateIn30Days })
   res.cookie('password', password, { expires: dateIn30Days })
 
   // get previously set cookies
   var zip = req.cookies.zip
   var email = req.cookies.email
 
-  // save to database
-  var user = new Parse.User()
+  // save to database user
+	users.create(email, password, fname, lname, zip)
 
-	user.set("username",email)
-  user.set("email",email)
-  user.set("password",password)
-
-  user.set("firstname",firstname)
-  user.set("lastname",lastname)
-  user.set("zip",zip)
-
-	user.signUp().then( function success(obj) {
-		  console.log("client signed up with id " + obj.id)
-      res.render(__dirname + '/public/views/user.ejs', {
-        fname: req.body.firstname,
-        lname: req.body.lastname
-      })
-		}, function error(err) {
-			console.error(err)
-		})
+	// render html
+	res.render(__dirname + '/public/views/user.ejs', {
+		fname: req.body.firstname,
+		lname: req.body.lastname
+	})
 
 })
 
