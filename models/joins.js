@@ -20,7 +20,7 @@ exports.create = function(email, zip) {
 /*
 gateway.clientToken.generate({}, function (err, res) {
   console.log("braintree")
-  response.render(__dirname + '../public/views/pay.ejs', {
+  response.render(__dirname + '../views/pay.ejs', {
     clientToken: res.clientToken
   });
 

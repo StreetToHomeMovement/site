@@ -8,10 +8,15 @@
       border: 1px solid #ccc;
       box-sizing: border-box;
     }
+    #forgotpwd {
+      font-size: 14px;
+      float: right
+    }
+
   </style>
   <head>
     <title>Street to Home Movement</title>
-    <link href="/public/assets/css/index.css" rel="stylesheet">
+    <link href="/public/css/index.css" rel="stylesheet">
     <script src="https://use.typekit.net/xul5xsx.js"></script>
     <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
   </head>
@@ -20,20 +25,14 @@
     <div class="scene">
       <section id="outreach" class="container">
         <div class="half text">
-          <p>
-            Make account so you can login:
-          </p>
-            <form method="POST" action="/user">
-              <label><b>first name</b></label>
-              <input type="text" placeholder="first name" name="firstname" required>
-              <label><b>last name</b></label>
-              <input type="text" placeholder="last name" name="lastname">
-              <label><b>password</b></label>
-              <input type="password" placeholder="enter password" name="password" required>
-              <br><br>
-              <input type="submit" value="set">
-            </form>
-
+          <form method="POST" action="/user">
+            <label><b>New password</b></label>
+            <input type="password" placeholder="" name="password1" required>
+            <label><b>Confirm new password</b></label>
+            <input type="password" placeholder="" name="password2" required>
+            <br><br>
+            <input type="submit" value="Reset Password">
+          </form>
         </div>
         <div class="half payplaceholder"></div>
       </section>

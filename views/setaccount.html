@@ -8,15 +8,10 @@
       border: 1px solid #ccc;
       box-sizing: border-box;
     }
-    #forgotpwd {
-      font-size: 14px;
-      float: right
-    }
-
   </style>
   <head>
     <title>Street to Home Movement</title>
-    <link href="/public/assets/css/index.css" rel="stylesheet">
+    <link href="/public/css/index.css" rel="stylesheet">
     <script src="https://use.typekit.net/xul5xsx.js"></script>
     <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
   </head>
@@ -26,16 +21,17 @@
       <section id="outreach" class="container">
         <div class="half text">
           <p>
-            Login to your account:
+            Make account so you can login:
           </p>
             <form method="POST" action="/user">
-              <label><b>email</b></label>
-              <input type="text" placeholder="email" name="email" required>
+              <label><b>first name</b></label>
+              <input type="text" placeholder="first name" name="firstname" required>
+              <label><b>last name</b></label>
+              <input type="text" placeholder="last name" name="lastname">
               <label><b>password</b></label>
-              <input type="password" placeholder="password" name="password" required>
+              <input type="password" placeholder="enter password" name="password" required>
               <br><br>
-              <input type="submit" value="login">
-              <a id="forgotpwd" href="http://www.whimsicalcyn.com">reset password</a>
+              <input type="submit" value="set">
             </form>
 
         </div>
