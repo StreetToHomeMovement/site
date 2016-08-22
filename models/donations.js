@@ -1,6 +1,4 @@
-var Parse = require('parse/node')
-Parse.initialize("sukeiran44ka88aj");
-Parse.serverURL = 'https://parse-server-codecraft-x-ample.herokuapp.com/parse';
+var Parse = require('../helpers/parse_server')
 
 exports.create = function(payment_method_nonce, amount) {
   var Donation = new Parse.Object.extend("Donation")
