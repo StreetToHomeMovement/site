@@ -29,18 +29,17 @@
             Reset your password:
           </p>
           <form method="POST" action="/user">
-            <label><b>New password</b></label>
-            <input type="password" placeholder="" name="password1" required>
-            <label><b>Confirm new password</b></label>
-            <input type="password" placeholder="" name="password2" required>
-            <br><br>
-            <input type="submit" value="Reset Password">
+            <label for="pass1"><b>Password:</b></label>
+            <input pattern=".{5,}" type="password" name="pass1" id="pass1" required title="5 characters minimum" >
+            <label for="pass2"><b>Confirm Password:</b></label>
+            <input type="password" name="pass2" id="pass2" onkeyup="confirmPassword(); return false;">
+            <p id="confirmMessage" class="confirmMessage"></p>
+            <input id="submitresetpwd" type="hidden" value="Reset Password">
           </form>
         </div>
         <div class="half payplaceholder"></div>
       </section>
     </div>
+    <script src="/public/js/password_checks.js"></script>
   </body>
-  <script>
-  </script>
 </html>
