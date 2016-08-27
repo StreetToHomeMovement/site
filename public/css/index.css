@@ -231,6 +231,7 @@ just to text is visible during testing */
   border-width: thick;
   border-color: rgb(222, 222, 222);
   margin: 15px;
+  cursor: pointer
 }
 
 .signin:hover, .signin:active {

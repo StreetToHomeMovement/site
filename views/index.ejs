@@ -4,6 +4,8 @@
     <link href="/public/css/index.css" rel="stylesheet">
     <script src="https://use.typekit.net/xul5xsx.js"></script>
     <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
+    <script src="http://www.parsecdn.com/js/parse-latest.js"></script>
+    <script src="/public/js/where_to_land.js"></script>
   </head>
   <body id="body">
     <header id="header">
@@ -41,18 +43,20 @@
 
           <ul id="menu">
 
+            <% if (firstname) { %>
             <li>
-              <a class="signin" href="/user">
-                <%= firstname || 'Signin' %>
+              <a class="signin" onclick="myDoggie()">
+                <%= firstname %>
               </a>
             </li>
+            <% } %>
 
             <li>
               <div class="dropdown">
-              <a onclick="myFunction()" class="dropbtn">...</a>
+              <a class="dropbtn" onclick="myFunction()">...</a>
                 <div id="myDropdown" class="dropdown-content">
-                  <a href="/login">Sign in</a>
-                  <a href="/pay">New account</a>
+                  <a href="/login">Login</a>
+                  <a href="#join">New account</a>
                 </div>
               </div>
             </li>
@@ -108,7 +112,7 @@
             </p>
           </div>
         </section>
-        <section id="join" class="container">
+        <section id="join" name="join" class="container">
           <div class="box login">
             <form class="signup" method="post" action="/pay">
             <h2>Join our revolution</h2>

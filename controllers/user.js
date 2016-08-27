@@ -1,17 +1,26 @@
-var users = require('../models/users.js')
+var Parse = require('../helpers/parse_server')
+var path = require('path')
 
 module.exports = function(app) {
 
   app.get('/user', function(req, res) {
-    if (req.cookies.firstname) {
-      res.render('user.ejs', {
-        fname: req.cookies.firstname,
-        lname: req.cookies.lastname
-      })
-    }
-    else {
-      res.sendFile('setaccount.html')
-    }
+
+    Parse.Cloud.run("test").then(function(response) {
+      console.log(response)
+    })
+
+    console.log("line 12")
+
+
+    var token = req.cookies.sessionToken
+    var email = req.cookies.email
+    var password = req.cookies.password
+
+    console.log('sessiontoken: ' + token)
+    console.log('cookies: ' + req.cookies)
+
+    res.sendFile(path.join(__dirname, '..', '/views/login.html'))
+
   })
 
   app.post('/user', function(req, res) {

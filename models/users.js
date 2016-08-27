@@ -17,4 +17,6 @@ exports.create = function(email, password, fname, lname, zip) {
       console.error(err)
     })
 
+  console.log(Parse.User.current())
+
 }
