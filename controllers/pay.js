@@ -9,9 +9,9 @@ module.exports = function(app) {
   	var zip = req.body.zip
 
     // set cookies
-    var dateIn30Days = new Date(Date.now() + 1000*60*60*24*30)
-    res.cookie('email', email, { expires: dateIn30Days })
-    res.cookie('zip', zip, { expires: dateIn30Days })
+    var dateIn1Hour = new Date(Date.now() + 1000*60*60*1)
+    res.cookie('email', email, { expires: dateIn1Hour })
+    res.cookie('zip', zip, { expires: dateIn1Hour })
 
   	// save to db
   	joins.create(email, zip)

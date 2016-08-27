@@ -6,6 +6,7 @@
     <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
     <script src="http://www.parsecdn.com/js/parse-latest.js"></script>
     <script src="/public/js/where_to_land.js"></script>
+    <script src="/public/js/logout.js"></script>
   </head>
   <body id="body">
     <header id="header">
@@ -42,24 +43,29 @@
           </div>
 
           <ul id="menu">
-
-            <% if (firstname) { %>
-            <li>
-              <a class="signin" onclick="myDoggie()">
-                <%= firstname %>
-              </a>
+            <li id="li1" style="display:none">
+              <a id="userbox" class="signin" onclick="myDoggie()"></a>
             </li>
-            <% } %>
-
             <li>
               <div class="dropdown">
               <a class="dropbtn" onclick="myFunction()">...</a>
                 <div id="myDropdown" class="dropdown-content">
                   <a href="/login">Login</a>
+                  <a id="logout" href="/" style="display:none" onclick="logout()">Logout</p>
                   <a href="#join">New account</a>
                 </div>
               </div>
             </li>
+
+            <script>
+              var user = Parse.User.current()
+              if (user) {
+                var firstname = user.attributes.firstname
+                document.getElementById("li1").style.display = "inline"
+                document.getElementById("logout").style.display = "inline"
+                document.getElementById("userbox").text = firstname
+              }
+            </script>
 
           </ul>
 

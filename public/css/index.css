@@ -281,7 +281,7 @@ just to text is visible during testing */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-.dropdown-content a {
+.dropdown-content a,p {
     font-size: 20px;
     color: black;
     padding: 12px 16px;

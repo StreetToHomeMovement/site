@@ -11,8 +11,7 @@ function login() {
 	Parse.User.logIn(email, password).then(
 		function success(user) {
 			console.log("Logged in ", Parse.User.current())
-			document.cookie = "sessionToken" + "=" + Parse.User.current().attributes.sessionToken + "; "
-			document.cookie = "firstname" + "=" + Parse.User.current().attributes.firstname + "; "
+			window.location.href = '/user'
 		},
 		function error(err) {
 			alert("Error: " + err.code + " " + err.message)

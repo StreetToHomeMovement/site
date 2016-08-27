@@ -30,8 +30,7 @@ function setaccount() {
 
   user.signUp().then( function success(obj) {
       console.log("client signed up with id " + obj.id)
-			document.cookie = "sessionToken" + "=" + Parse.User.current().attributes.sessionToken + "; "
-			document.cookie = "firstname" + "=" + Parse.User.current().attributes.firstname + "; "
+			window.location.href = '/user'
     }, function error(err) {
       console.error(err)
     })
