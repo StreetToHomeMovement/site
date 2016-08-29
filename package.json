@@ -18,9 +18,7 @@
   "homepage": "https://github.com/StreetToHomeMovement/site#readme",
   "dependencies": {
     "braintree": "^1.41.0",
-    "express": "^4.14.0"
-  },
-  "devDependencies": {
+    "express": "^4.14.0",
     "cookie-parser": "^1.4.3",
     "parse-server": "^2.2.17"
   }
