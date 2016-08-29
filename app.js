@@ -1,7 +1,6 @@
 var ParseServer = require('parse-server').ParseServer
 var express = require('express')
 var app = express()
-var port = process.env.PORT || 3000
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 
@@ -65,4 +64,8 @@ setaccountController(app)
 userController(app)
 errorController(app)
 
-app.listen(port)
+var port = process.env.PORT || 3000
+var httpServer = require('http').createServer(app);
+httpServer.listen(port, function () {
+	console.log('parse-server-example running on port ' + port + '.');
+});
