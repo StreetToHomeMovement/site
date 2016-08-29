@@ -1,5 +1,5 @@
 Parse.initialize("sukeiran44ka88aj");
-Parse.serverURL = 'http://localhost:3000/parse';
+Parse.serverURL = 'https://localhost:3000/parse';
 
 function logout() {
 	console.log("Logout called");

@@ -1,5 +1,5 @@
 Parse.initialize("sukeiran44ka88aj");
-Parse.serverURL = 'http://localhost:3000/parse';
+Parse.serverURL = 'https://parse-server-codecraft-x-ample.herokuapp.com/parse';
 
 function resetpwd() {
 	console.log("resetpwd called");
