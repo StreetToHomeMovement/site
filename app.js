@@ -1,3 +1,5 @@
+console.log('starting')
+
 var ParseServer = require('parse-server').ParseServer
 var express = require('express')
 var app = express()
