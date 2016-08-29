@@ -21,7 +21,7 @@ var api = new ParseServer({
 
 	//**** Email Verification ****//
 	/* Enable email verification */
-	verifyUserEmails: true,
+	// verifyUserEmails: true,
 	/* The public URL of your app */
 	// This will appear in the link that is used to verify email addresses and reset passwords.
 	/* Set the mount path as it is in serverURL */
