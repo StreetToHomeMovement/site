@@ -9,6 +9,7 @@ function setaccount() {
 	var lastname = document.getElementById("fistname").value
 	var password = document.getElementById("password").value
 
+	// should use a library to parse cookies instead of doing it myself
 	var raw_cookies = document.cookie.split('; ')
 	var cookies = {}
 	for (i = 0; i < raw_cookies.length; i++) {

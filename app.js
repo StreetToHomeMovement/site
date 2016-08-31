@@ -14,7 +14,7 @@ var errorController = require('./controllers/error.js')
 var api = new ParseServer({
 	databaseURI: 'mongodb://heroku_2261fmlk:ml55j85auqbbu67m0clur0toc5@ds153835.mlab.com:53835/heroku_2261fmlk',
 	cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-	serverURL: process.env.SERVER_URL || 'https://localhost:3000/parse',  // Don't forget to change to https if needed
+	serverURL: process.env.SERVER_URL || 'https://parse-server-codecraft-x-ample.herokuapp.com/parse',  // Don't forget to change to https if needed
 
 	appId: process.env.APP_ID || 'sukeiran44ka88aj',
 	masterKey: process.env.MASTER_KEY || '33jlas9893jkla', //Add your master key here. Keep it secret!
@@ -25,7 +25,7 @@ var api = new ParseServer({
 	/* The public URL of your app */
 	// This will appear in the link that is used to verify email addresses and reset passwords.
 	/* Set the mount path as it is in serverURL */
-	publicServerURL: process.env.SERVER_URL || 'https://localhost:3000/parse',
+	publicServerURL: process.env.SERVER_URL || 'https://parse-server-codecraft-x-ample.herokuapp.com/parse',
 	/* This will appear in the subject and body of the emails that are sent */
 	appName: process.env.APP_NAME || "StreetToFightMovement",
 
@@ -41,7 +41,7 @@ var api = new ParseServer({
 
 });
 
-var x = process.env.SERVER_URL || 'https://localhost:3000/parse'
+var x = process.env.SERVER_URL || 'https://parse-server-codecraft-x-ample.herokuapp.com/parse'
 console.log("server url: " + x)
 
 // Serve the Parse API on the /parse URL prefix
