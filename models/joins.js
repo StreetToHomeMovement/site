@@ -1,7 +1,6 @@
 var Parse = require('../helpers/parse_server')
 
 exports.create = function(email, zip) {
-  var join_id = 'what'
   var Joined = new Parse.Object.extend("joined")
   var joined = new Joined()
 
@@ -20,14 +19,3 @@ exports.create = function(email, zip) {
     })
 
 }
-
-
-/*
-gateway.clientToken.generate({}, function (err, res) {
-  console.log("braintree")
-  response.render(__dirname + '../views/pay.ejs', {
-    clientToken: res.clientToken
-  });
-
-});
-*/

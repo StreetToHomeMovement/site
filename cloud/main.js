@@ -1,50 +1,32 @@
-// Parse.Cloud.define('getTotalJoinCount', function(request, response) {
-//
-//   var token =  request.user.getSessionToken()
-//   var email = request.user.attributes.email
-//   var id = request.user.id
-//   console.log("in get total count function")
-//   console.log("token is: " + token)
-//
-//   var query = new Parse.Query('joined')
-//   query.equalTo("email", request.user.attributes.email)
-//   query.count({ sessionToken: token }).then(function(count) {
-//       response.success(count+23)
-//     }, function(error) {
-//       response.error("didnt work")
-//     })
-// })
+Parse.Cloud.define('linkJoinedWithUser', function(req, res) {
+  Parse.Cloud.useMasterKey()
 
-Parse.Cloud.define('getGoodies', function(request, response) {
-
-  var token =  request.user.getSessionToken()
-  var email = request.user.attributes.email
-  var id = request.user.id
-  console.log("in get total count function")
-  console.log("token is: " + token)
-
-  var query = new Parse.Query('joined')
-  query.equalTo("email", request.user.attributes.email)
-  query.count({ sessionToken: token }).then(function(count) {
-      response.success(count)
-    }, function(error) {
-      response.error("didnt work")
-    })
-})
-
-Parse.Cloud.define('getDonations', function(req, res) {
-
+  // unmangle
   var token =  req.user.getSessionToken()
-  var email = req.user.attributes.email
+  var user = req.user
+  var joined_id = req.params.joined_id
+  console.log("user id is: " + user.id) //+ " and joined id is " + joined_id)
+  console.log("joined_id is: " + joined_id)
 
-  console.log("in getDonations function")
-  console.log("token is: " + token)
+  // get joined obj
+  q = new Parse.Query("joined")
+	q.equalTo("objectId", joined_id)
+	q.first().then(function(joined) {
+    console.log("found " + joined.id)
 
-  var query = new Parse.Query('joined')
-  query.equalTo("email", req.user.attributes.email)
-  query.count({ sessionToken: token }).then(function(count) {
-      response.success("joined " + count + " times")
-    }, function(error) {
-      response.error("didnt work")
-    })
+    // update user obj to reference joined obj
+    user.set("joined", joined)
+    // save to db
+
+    console.log('attempting to save')
+    user.save().then( function success(obj) {
+        console.log("user updated joined with joined id: " + joined.id)
+      }, function error(err) {
+        console.error(err)
+      })
+
+  }, function(err) {
+    console.error(err)
+  })
+
 })

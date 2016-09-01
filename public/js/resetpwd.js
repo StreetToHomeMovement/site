@@ -9,7 +9,7 @@ function resetpwd() {
 
 	Parse.User.requestPasswordReset(email).then(
 		function success() {
-			console.log("reset password email sent")
+			alert("reset password email sent")
 		},
 		function error(err) {
 			alert("Error: " + err.code + " " + err.message)

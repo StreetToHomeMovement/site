@@ -5,18 +5,17 @@ module.exports = function(app) {
 
   app.post('/setaccount', function(req, res) {
     // retrieve the donor
-    var donor = 'test'
     var q = new Parse.Query("joined")
     q.equalTo("objectId", req.cookies.joined_id)
-    q.first().then(function(donor) {
-    	console.log("found " + donor.id)
+    q.first().then(function(joined) {
+    	console.log("found " + joined.id)
       // save to db
       var Donation = new Parse.Object.extend("Donation")
       var donation = new Donation()
 
       donation.set("payment_method_nonce", req.body.payment_method_nonce)
       donation.set("amount", req.body.amount)
-      donation.set("donor", donor)
+      donation.set("joined", joined)
 
       donation.save().then( function success(obj) {
           console.log("donation made with id " + obj.id)
