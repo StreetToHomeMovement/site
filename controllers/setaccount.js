@@ -1,5 +1,6 @@
 var path = require('path')
 var Parse = require('../helpers/parse_server')
+// try to refactor by chaining "then" twice 
 
 module.exports = function(app) {
 

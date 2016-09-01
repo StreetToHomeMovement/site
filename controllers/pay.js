@@ -1,4 +1,3 @@
-var joins = require('../models/joins.js')
 var gateway = require('../helpers/braintree_gateway.js').gateway
 var Parse = require('../helpers/parse_server')
 
