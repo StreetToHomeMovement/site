@@ -6,5 +6,21 @@
   <body>
     <a href="/"><img src="/public/images/favicon.ico" alt="Home"></img></a>
     <p><b>Welcome: </b><%- "to " + "your " + "dashboard" %></p>
+    <ul id="summary"></ul>
   </body>
+
+  <script>
+    Parse.Cloud.run("personalDonations").then(function(response) {
+      var node = document.createElement("li");
+      var textnode = document.createTextNode("youve contributed $" + (response.amount || "0"));
+      node.appendChild(textnode);
+      document.getElementById("summary").appendChild(node);
+    })
+    Parse.Cloud.run("totalDonations").then(function(total) {
+      var node = document.createElement("li");
+      var textnode = document.createTextNode("we have raised $" + (total || "0"));
+      node.appendChild(textnode);
+      document.getElementById("summary").appendChild(node);
+    })
+  </script>
 </html>
