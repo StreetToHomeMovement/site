@@ -6,6 +6,7 @@ Parse.Cloud.define('linkJoinedWithUser', function(req, res) {
   var token =  req.user.getSessionToken()
   var user = req.user
   var joined_id = req.params.joined_id
+  console.log("sessionToken: " + token) //+ " and joined id is " + joined_id)
   console.log("user id is: " + user.id) //+ " and joined id is " + joined_id)
   console.log("joined_id is: " + joined_id)
 
@@ -61,6 +62,8 @@ Parse.Cloud.define('personalDonations', function(req, res) {
   var token =  req.user.getSessionToken()
   var user = req.user
   var joined = user.attributes.joined
+  console.log(user.attributes)
+  console.log(joined.id)
 
   var jq = new Parse.Query("joined")
   jq.find('objectId', joined.id)

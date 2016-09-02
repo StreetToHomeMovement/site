@@ -63,3 +63,46 @@ function resetpwd() {
 		}
 	)
 }
+
+function setaccount() {
+	console.log("Login called");
+
+	// unmangle form data
+	var firstname = document.getElementById("firstname").value
+	var lastname = document.getElementById("lastname").value
+	var password = document.getElementById("password").value
+
+	// should use a library to parse cookies instead of doing it myself
+	var raw_cookies = document.cookie.split('; ')
+	var cookies = {}
+	for (i = 0; i < raw_cookies.length; i++) {
+		bites = raw_cookies[i].split("=")
+		cookies[bites[0]] = bites[1]
+	}
+
+	// get joined object and then sign up user
+	var joined_id = cookies.joined_id
+	var q = new Parse.Query("joined")
+	q.equalTo("objectId", joined_id)
+	q.first().then(function(joined) {
+		console.log(joined.attributes)
+
+		var user = new Parse.User()
+	  user.set("username",joined.attributes.email)
+	  user.set("email",joined.attributes.email)
+		user.set("zip",joined.attributes.zip)
+
+		user.set("lastname",lastname)
+	  user.set("firstname",firstname)
+		user.set("password",password)
+		user.set("joined",joined)
+
+	  user.signUp().then( function success(obj) {
+	      console.log("client signed up with id " + obj.id)
+				window.location.href = '/user'
+	    }, function error(err) {
+	      console.error(err)
+	    })
+
+	})
+}

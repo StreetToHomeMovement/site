@@ -8,11 +8,6 @@ module.exports = function(app) {
   	var email = req.body.email
   	var zip = req.body.zip
 
-    // set as cookies
-    var dateIn4Weeks = new Date(Date.now() + 1000*60*60*24*7*4)
-    res.cookie('email', email, { expires: dateIn4Weeks })
-    res.cookie('zip', zip, { expires: dateIn4Weeks })
-
   	// save to db
     var Joined = new Parse.Object.extend("joined")
     var joined = new Joined()
