@@ -15,4 +15,4 @@ module.exports = function(app) {
     res.send(err.message || '** not a valid route **')
   })
 
- }
+}
