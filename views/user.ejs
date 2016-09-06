@@ -38,9 +38,9 @@
           var firstname = Parse.User.current().attributes.firstname
           document.getElementById("displayFirstName").innerHTML = "Welcome " + firstname
 
-          Parse.Cloud.run("personalDonations").then(function(response) {
+          Parse.Cloud.run("personalDonations").then(function(temp) {
             var node = document.createElement("p");
-            var textnode = document.createTextNode("youve contributed $" + (response.amount || "0"));
+            var textnode = document.createTextNode("youve contributed $" + (temp || "0"));
             node.appendChild(textnode);
             document.getElementById("summary").appendChild(node);
           })

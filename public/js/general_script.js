@@ -80,29 +80,24 @@ function setaccount() {
 		cookies[bites[0]] = bites[1]
 	}
 
-	// get joined object and then sign up user
-	var joined_id = cookies.joined_id
-	var q = new Parse.Query("joined")
-	q.equalTo("objectId", joined_id)
-	q.first().then(function(joined) {
-		console.log(joined.attributes)
+	var email = decodeURIComponent(cookies.email)
+	var zip = cookies.zip
 
-		var user = new Parse.User()
-	  user.set("username",joined.attributes.email)
-	  user.set("email",joined.attributes.email)
-		user.set("zip",joined.attributes.zip)
+	var user = new Parse.User()
+  user.set("username",email)
+  user.set("email",email)
+	user.set("zip",zip)
 
-		user.set("lastname",lastname)
-	  user.set("firstname",firstname)
-		user.set("password",password)
-		user.set("joined",joined)
+	user.set("lastname",lastname)
+  user.set("firstname",firstname)
+	user.set("password",password)
 
-	  user.signUp().then( function success(obj) {
-	      console.log("client signed up with id " + obj.id)
-				window.location.href = '/user'
-	    }, function error(err) {
-	      console.error(err)
-	    })
-
-	})
+  user.signUp().then(
+		function success(obj) {
+      console.log("client signed up with id " + obj.id)
+			window.location.href = '/user'
+    },
+		function error(err) {
+      console.error(err)
+    })
 }

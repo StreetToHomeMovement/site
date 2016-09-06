@@ -8,29 +8,29 @@ module.exports = function(app) {
   	var email = req.body.email
   	var zip = req.body.zip
 
+    // set as cookies
+    var dateIn100days = new Date(Date.now() + 1000*60*60*24*100)
+    res.cookie('email', email, { expires: dateIn100days })
+    res.cookie('zip', zip, { expires: dateIn100days })
+
   	// save to db
     var Joined = new Parse.Object.extend("joined")
     var joined = new Joined()
 
-    joined.set("email", email)
-    joined.set("zip", zip)
+    joined.set("email", req.body.email)
+    joined.set("zip", req.body.zip)
 
     joined.save().then( function success(obj) {
         console.log("client joined with id " + obj.id)
-        // set cookie
-        var dateIn1Week = new Date(Date.now() + 1000*60*60*24*7)
-        res.cookie('joined_id', obj.id, { expires: dateIn1Week })
       }, function error(err) {
         console.error(err)
       })
 
   	// generate braintree client token and render html
   	gateway.clientToken.generate({}, function (err, res2) {
-  	  res.render('pay.ejs', {
-  	    clientToken: res2.clientToken
-  	  })
-
+  	  res.render('pay.ejs', { clientToken: res2.clientToken })
   	})
+
   })
 
 }
