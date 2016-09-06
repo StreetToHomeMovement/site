@@ -1,26 +1,57 @@
 <html>
   <head>
+    <title>Street to Home Movement</title>
+    <link href="/public/css/index.css" rel="stylesheet">
+    <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
     <script src="https://www.parsecdn.com/js/parse-latest.js"></script>
     <script src="/public/js/general_script.js"></script>
   </head>
-  <body>
-    <a href="/"><img src="/public/images/favicon.ico" alt="Home"></img></a>
-    <p><b>Welcome: </b><%- "to " + "your " + "dashboard" %></p>
-    <ul id="summary"></ul>
-  </body>
+  <body id="body">
+    <header id="header">
+      <div id="sidebar">
+        <div id="sidebar-logo"></div>
+        <div id="sidebar-label">
+          <p>Street to Home</p>
+        </div>
+        <nav id="navigation-menu">
+          <svg width="89px" height="89px">
+            <path d="M35,38 C39,38 41,38 45,38" fill="none" stroke-width="2px" stroke="#000000"></path>
+            <path d="M45,38 C49,38 51,38 55,38" fill="none" stroke-width="2px" stroke="#000000"></path>
+            <line x1="35" y1="45" x2="45" y2="45" x="0" fill="none" stroke-width="2px" stroke="#000000" stroke-opacity="1"></line>
+            <line x1="45" y1="45" x2="55" y2="45" x="10" fill="none" stroke-width="2px" stroke="#000000" stroke-opacity="1"></line>
+            <path d="M35,52 C39,52 41,52 45,52" fill="none" stroke-width="2px" stroke="#000000"></path>
+            <path d="M45,52 C49,52 51,52 55,52" fill="none" stroke-width="2px" stroke="#000000"></path>
+          </svg>
+          <ul>
+            <li>Home</li>
+            <li>About</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div id="content">
+      <div class="scene">
+        <a href="/"><p>home</p></img></a>
+        <p><b id="displayFirstName"></b> to your dashboard</p>
+        <ul id="summary"></ul>
+        <script>
+          var firstname = Parse.User.current().attributes.firstname
+          document.getElementById("displayFirstName").innerHTML = "Welcome " + firstname
 
-  <script>
-    Parse.Cloud.run("personalDonations").then(function(response) {
-      var node = document.createElement("li");
-      var textnode = document.createTextNode("youve contributed $" + (response.amount || "0"));
-      node.appendChild(textnode);
-      document.getElementById("summary").appendChild(node);
-    })
-    Parse.Cloud.run("totalDonations").then(function(total) {
-      var node = document.createElement("li");
-      var textnode = document.createTextNode("we have raised $" + (total || "0"));
-      node.appendChild(textnode);
-      document.getElementById("summary").appendChild(node);
-    })
-  </script>
+          Parse.Cloud.run("personalDonations").then(function(response) {
+            var node = document.createElement("p");
+            var textnode = document.createTextNode("youve contributed $" + (response.amount || "0"));
+            node.appendChild(textnode);
+            document.getElementById("summary").appendChild(node);
+          })
+          Parse.Cloud.run("totalDonations").then(function(total) {
+            var node = document.createElement("p");
+            var textnode = document.createTextNode("we have raised $" + (total || "0"));
+            node.appendChild(textnode);
+            document.getElementById("summary").appendChild(node);
+          })
+        </script>
+      </div>
+    </div>
+  </body>
 </html>
