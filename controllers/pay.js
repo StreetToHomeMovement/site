@@ -4,8 +4,10 @@ var Parse = require('../helpers/parse_server')
 module.exports = function(app) {
 
   app.post('/pay', function (req, res) {
+    console.log(req.headers.host)
+
   	// unmangle form post
-  	var email = req.body.email
+  	var email = req.body.email.toLowerCase()
   	var zip = req.body.zip
 
     // set as cookies
@@ -17,8 +19,8 @@ module.exports = function(app) {
     var Joined = new Parse.Object.extend("joined")
     var joined = new Joined()
 
-    joined.set("email", req.body.email)
-    joined.set("zip", req.body.zip)
+    joined.set("email", email)
+    joined.set("zip", zip)
 
     joined.save().then( function success(obj) {
         console.log("client joined with id " + obj.id)
