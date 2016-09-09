@@ -2,9 +2,9 @@
 
 Install latest version of [nodejs](https://nodejs.org) for your operating system 
 
-Install [nodemon](https://github.com/remy/nodemon) to monitor for any changes in the node.js application and automatically restart the server:
+Install [nodemon](https://github.com/remy/nodemon) to monitor for any changes in the node.js application and automatically restart the server during development:
 ```bash
-$ npm install -g parse-dashboard
+$ npm install -g nodemon
 ```
 
 Install [Parse dashboard](https://github.com/ParsePlatform/parse-dashboard) to view and manipulate the Parse database in the browser: 
@@ -27,7 +27,7 @@ Replace the placeholder passwords in passwords.sample.json with the actual passw
 
 ##Run Locally
 
-```cd``` the main dir on your machine locally and
+```cd``` to the main dir on your machine locally and
 run the following command to host locally on port 3000:
 ```bash
 $ nodemon app.js
