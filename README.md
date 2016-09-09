@@ -17,7 +17,7 @@ Clone this repository locally to your machine
 $ git clone git@github.com:StreetToHomeMovement/site.git
 ```
 
-```cd``` into the directory you just cloned and install dependencies:
+```cd``` into the directory you just cloned then install dependencies:
 ```bash
 $ npm install
 ```
