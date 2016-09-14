@@ -64,40 +64,52 @@ function resetpwd() {
 	)
 }
 
+function makeTempAccount() {
+	console.log("Temp login called");
+
+	// unmangle form data
+	var email = document.getElementById("email").value
+	var zip = document.getElementById("email").value
+	var randomPassword = Math.random().toString(36).slice(-8)
+
+	var user = new Parse.User()
+  user.set("username",email)
+  user.set("email",email)
+	user.set("zip",zip)
+	user.set("password",randomPassword)
+	user.set("userSetPassword",false)
+
+  user.signUp().then(
+		function success(obj) {
+      console.log("temp account made with id " + obj.id)
+			console.log(obj)
+			window.location.href = '/pay'
+    },
+		function error(err) {
+      console.error(err)
+			// write code here that handles what happens if their is already a User
+			// with this email address? what if they want to donate again without
+			// making an account?
+    }
+	)
+}
+
 function setaccount() {
-	console.log("Login called");
+	console.log("setting account");
 
 	// unmangle form data
 	var firstname = document.getElementById("firstname").value
 	var lastname = document.getElementById("lastname").value
 	var password = document.getElementById("password").value
 
-	// should use a library to parse cookies instead of doing it myself
-	var raw_cookies = document.cookie.split('; ')
-	var cookies = {}
-	for (i = 0; i < raw_cookies.length; i++) {
-		bites = raw_cookies[i].split("=")
-		cookies[bites[0]] = bites[1]
-	}
-
-	var email = decodeURIComponent(cookies.email)
-	var zip = cookies.zip
-
-	var user = new Parse.User()
-  user.set("username",email)
-  user.set("email",email)
-	user.set("zip",zip)
-
-	user.set("lastname",lastname)
-  user.set("firstname",firstname)
-	user.set("password",password)
-
-  user.signUp().then(
-		function success(obj) {
-      console.log("client signed up with id " + obj.id)
-			window.location.href = '/user'
-    },
-		function error(err) {
-      console.error(err)
-    })
+	Parse.User.current().setPassword(password)
+	Parse.User.current().set("firstname",firstname)
+	Parse.User.current().set("lastname",lastname)
+	Parse.User.current().save().then( function success(obj) {
+			console.log('set account for user: ' + obj.id)
+			document.location.href = '/user'
+		}, function error(err) {
+			console.error(err)
+		}
+	)
 }
