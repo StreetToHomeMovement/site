@@ -75,7 +75,7 @@ function resetpwd() {
 }
 
 function makeTempAccount() {
-	console.log("Temp login called");
+	console.log("Temp login called")
 
 	// unmangle form data
 	var email = document.getElementById("email").value
@@ -124,4 +124,12 @@ function setaccount() {
 			console.error(err)
 		}
 	)
+}
+
+function callDeleteAllPaymentMethods() {
+	var braintreeCustomerId = Parse.User.current().attributes.braintreeCustomerId
+	Parse.Cloud.run("deleteAllPaymentMethods",{customerId: braintreeCustomerId}).then(function(resultMsg) {
+		console.log(resultMsg)
+		window.location.href = '/user'
+	})
 }

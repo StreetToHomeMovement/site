@@ -1,5 +1,4 @@
 var gateway = require('../helpers/braintree_gateway.js').gateway
-var Parse = require('../helpers/parse_server')
 
 module.exports = function(app) {
 

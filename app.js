@@ -12,7 +12,7 @@ var userController = require('./controllers/user.js')
 var errorController = require('./controllers/error.js')
 
 // run cronjob
-require ('./cronjobs/reminderEmail.js')
+// require ('./cronjobs/reminderEmail.js')
 
 var api = new ParseServer({
 	databaseURI: 'mongodb://heroku_2261fmlk:ml55j85auqbbu67m0clur0toc5@ds153835.mlab.com:53835/heroku_2261fmlk',
