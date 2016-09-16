@@ -6,7 +6,6 @@ if (window.location.href.indexOf('localhost:3000') != -1) {
 }
 console.log('Parse.serverURL: ' + Parse.serverURL)
 
-
 function login() {
 	console.log("Login called");
 
@@ -18,6 +17,17 @@ function login() {
 		function success(user) {
 			console.log("Logged in ", Parse.User.current())
 			window.location.href = '/user'
+		},
+		function error(err) {
+			alert("Error: " + err.code + " " + err.message)
+		}
+	)
+}
+
+function tempLogin(email,password) {
+	Parse.User.logIn(email, password).then(
+		function success(user) {
+			console.log("Logged in ", Parse.User.current())
 		},
 		function error(err) {
 			alert("Error: " + err.code + " " + err.message)
@@ -69,7 +79,7 @@ function makeTempAccount() {
 
 	// unmangle form data
 	var email = document.getElementById("email").value
-	var zip = document.getElementById("email").value
+	var zip = document.getElementById("zip").value
 	var randomPassword = Math.random().toString(36).slice(-8)
 
 	var user = new Parse.User()
@@ -77,12 +87,12 @@ function makeTempAccount() {
   user.set("email",email)
 	user.set("zip",zip)
 	user.set("password",randomPassword)
-	user.set("userSetPassword",false)
-
+	user.set("tempAccount",true)
+	user.set('tempPassword',randomPassword)
+	user.set('reminderEmail',false)
   user.signUp().then(
-		function success(obj) {
-      console.log("temp account made with id " + obj.id)
-			console.log(obj)
+		function success(tempUser) {
+      console.log("temp account made with id " + tempUser.id)
 			window.location.href = '/pay'
     },
 		function error(err) {
@@ -105,6 +115,8 @@ function setaccount() {
 	Parse.User.current().setPassword(password)
 	Parse.User.current().set("firstname",firstname)
 	Parse.User.current().set("lastname",lastname)
+	Parse.User.current().set("tempAccount",false)
+	Parse.User.current().set('tempPassword',null)
 	Parse.User.current().save().then( function success(obj) {
 			console.log('set account for user: ' + obj.id)
 			document.location.href = '/user'

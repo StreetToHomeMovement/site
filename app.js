@@ -11,6 +11,9 @@ var setaccountController = require('./controllers/setaccount.js')
 var userController = require('./controllers/user.js')
 var errorController = require('./controllers/error.js')
 
+// run cronjob
+require ('./cronjobs/reminderEmail.js')
+
 var api = new ParseServer({
 	databaseURI: 'mongodb://heroku_2261fmlk:ml55j85auqbbu67m0clur0toc5@ds153835.mlab.com:53835/heroku_2261fmlk',
 	cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
@@ -42,7 +45,6 @@ var api = new ParseServer({
 });
 
 var cloud = process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js'
-console.log('cloud: ' + cloud)
 
 // Serve the Parse API on the /parse URL prefix
 var mountPath = process.env.PARSE_MOUNT || '/parse';
