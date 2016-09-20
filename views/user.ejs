@@ -59,9 +59,11 @@
                     <input type="radio" name="amount" id="amount_500" value="500">
                     <label for="amount_1000">$1000</label>
                     <input type="radio" name="amount" id="amount_1000" value="1000">
-                    <label for="amount_x">$</label>
-                    <input type="radio" name="amount" id="amount_x" value="">
-                      <input type="text" name="amount_text" id="amount_x_text"></input>
+                    <div id='amount_x_container'>
+                      <label for="amount_x">$</label>
+                      <input type="radio" name="amount" id="amount_x" value="">
+                        <input type="text" name="amount_text" id="amount_x_text"></input>
+                    </div>
                     <br>
                     <label for="subscription">Monthly Subscription</label>
                     <input type="checkbox" name="subscription" id="subscription" value="subscription">
@@ -71,7 +73,17 @@
                       function radioButtonHack() {
                         var amount_x = document.getElementById('amount_x')
                         var amount_x_text = document.getElementById('amount_x_text')
+                        var subscription = document.getElementById('subscription')
+                        var amount_x_container = document.getElementById('amount_x_container')
+
                         amount_x.value = amount_x_text.value
+
+                        if (subscription.checked) {
+                          amount_x_container.style.display = 'none'
+                          amount_x.checked = false
+                        } else {
+                          amount_x_container.style.display = 'block'
+                        }
                       }
                     </script>
                 </fieldset>
@@ -126,6 +138,8 @@
 
 
         <script>
+          Parse.User.become()
+
           var firstname = Parse.User.current().attributes.firstname
           document.getElementById("displayFirstName").innerHTML = "Welcome " + firstname
 

@@ -1,11 +1,9 @@
 var gateway = require('../helpers/braintree_gateway.js').gateway
-var passwordGenerator = require('generate-password')
 
 Parse.Cloud.define('totalDonations', function(req, res) {
   // needs work
   res.success('767') // placeholder
 })
-
 
 Parse.Cloud.define('personalDonations', function(req, res) {
 
