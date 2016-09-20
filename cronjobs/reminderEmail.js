@@ -1,10 +1,8 @@
 var cron = require('node-cron')
 var moment = require('moment')
 
-cron.schedule('* * * * *', function(){ // change this to once a day see link below:
-	// http://stackoverflow.com/questions/20499225/i-need-a-nodejs-scheduler-that-allows-for-tasks-at-different-intervals
-  console.log('running reminderEmail cronjob')
-  // moment.utc(moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss"))).format("DD:HH")
+cron.schedule('00 30 11 * * 1-5', function(){ // - Runs every weekday (Monday through Friday) at 11:30:00 AM. It does not run on Saturday or Sunday.
+	console.log('running reminderEmail cronjob')
   var now = moment(new Date()).format("YYYY-MM-DD'T'HH:mm:ss:SSSZ")
 
   q = new Parse.Query('User')
@@ -12,16 +10,15 @@ cron.schedule('* * * * *', function(){ // change this to once a day see link bel
   q.equalTo('reminderEmail',false)
   q.find({
     success: function(users) {
-      // results is an array of Parse.Object.
+      // users is an array of Parse.Object
       for (i = 0; i < users.length; i++) {
         var user = users[i]
         var email = user.get('email')
         console.log('email: ' + email)
-        var tempPassword = user.get('tempPassword')
         var createdAt = user.get('createdAt')
         var createdAtMoment = moment(createdAt, "YYYY-MM-DD'T'HH:mm:ss:SSSZ")
         var difference = moment(now).diff(createdAt, 'days');
-        if (email === 'darren@getsidewalk.com') { // change this to difference >= 5
+        if (difference >= 5) {
           var link = 'http://localhost:3000/setaccount/' + encodeURIComponent(email) + '/' + tempPassword
           var Mailgun = require('mailgun').Mailgun;
 
