@@ -37,10 +37,6 @@
           <li><p style="cursor: pointer;" onclick='callDeleteAllPaymentMethods()'><u>delete all payment methods</u></p></a></li>
         </ul>
 
-
-
-
-
         <div class="payment-card">
 
             <h2>Make donation to help us fight!</h2>
@@ -107,13 +103,22 @@
                     subscription = false
                   }
 
-                  Parse.Cloud.run("braintreeSubmit", {
-                    payment_method_nonce: result.nonce,
-                    amount: amount,
-                    subscription: subscription
-                  }).then(function() {
-                    alert('thank you for your generosity!')
-                  })
+                  if (subscription) {
+                    Parse.Cloud.run("createSubscription", {
+                      payment_method_nonce: result.nonce,
+                      amount: amount,
+                      subscription: subscription
+                    }).then(function() {
+                      console.log('thank you for your subscription!')
+                    })
+                  } else {
+                    Parse.Cloud.run("makeDonation", {
+                      payment_method_nonce: result.nonce,
+                      amount: amount
+                    }).then(function() {
+                      console.log('thank you for your donation!')
+                    })
+                  }
                 }
             })
           })

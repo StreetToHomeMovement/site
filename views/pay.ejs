@@ -77,15 +77,27 @@
                       subscription = false
                     }
 
-                    Parse.Cloud.run("linkBraintreeWithDb", {
-                      payment_method_nonce: result.nonce,
-                      amount: amount,
-                      subscription: subscription
-                    }).then(function() {
-                      document.location.href = '/setaccount'
-                    })
+                    if (subscription) {
+                      Parse.Cloud.run("createCustomerWithSubscription", {
+                        payment_method_nonce: result.nonce,
+                        amount: amount,
+                        subscription: subscription
+                      }).then(function() {
+                        console.log('thank you for your subscription!')
+                        window.location.href = '/setaccount'
+                      })
+                    } else {
+                      Parse.Cloud.run("createCustomerWithDonation", {
+                        payment_method_nonce: result.nonce,
+                        amount: amount
+                      }).then(function() {
+                        console.log('thank you for your donation!')
+                        window.location.href = '/setaccount'
+                      })
+                    }
+
                   }
-              });
+              })
           </script>
 
         </div>

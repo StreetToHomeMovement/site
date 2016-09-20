@@ -127,8 +127,7 @@ function setaccount() {
 }
 
 function callDeleteAllPaymentMethods() {
-	var braintreeCustomerId = Parse.User.current().attributes.braintreeCustomerId
-	Parse.Cloud.run("deleteAllPaymentMethods",{customerId: braintreeCustomerId}).then(function(resultMsg) {
+	Parse.Cloud.run("deleteAllPaymentMethods").then(function(resultMsg) {
 		console.log(resultMsg)
 		window.location.href = '/user'
 	})
