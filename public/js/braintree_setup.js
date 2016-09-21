@@ -31,22 +31,44 @@ function braintreeSetup(returningUser) {
           }
 
           if (subscription) {
+            // if existing subscription then error
+            var existingSubscriptionId = Parse.User.current().attributes.braintreeSubscriptionId
+
             Parse.Cloud.run(func1, {
               payment_method_nonce: result.nonce,
               amount: amount,
               subscription: subscription
-            }).then(function() {
+            }).then(function(result) {
+              console.log('response: ' + result)
               console.log('thank you for your subscription!')
-              if (returningUser != true) {window.location.href = '/setaccount'}
+              if (existingSubscriptionId) {
+                Parse.Cloud.run('cancelExistingSubscription', {subscriptionId: existingSubscriptionId}).then(function(result) {
+                  console.log(result)
+                  window.location.href = '/user'
+                })
+              } else {
+                if (returningUser != true) {
+                  window.location.href = '/setaccount'
+                } else {
+                  window.location.href = '/user'
+                }
+              }
             })
+
           } else {
+
             Parse.Cloud.run(func2, {
               payment_method_nonce: result.nonce,
               amount: amount
             }).then(function() {
               console.log('thank you for your donation!')
-              if (returningUser != true) {window.location.href = '/setaccount'}
+              if (returningUser != true) {
+                window.location.href = '/setaccount'
+              } else {
+                window.location.href = '/user'
+              }
             })
+
           }
         }
     })

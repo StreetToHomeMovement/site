@@ -33,6 +33,7 @@ Parse.Cloud.define('createCustomerWithSubscription', function(req, res) {
       console.error(err)
       console.log(result)
       req.user.set('braintreeCustomerId',customer_id)
+      req.user.set('braintreeSubscriptionId',result.subscription.id)
       req.user.save().then( function success(obj) {
           console.log('set user ' + req.user + ' with braintree ' + customer_id)
           res.success(customer_id)
@@ -82,12 +83,23 @@ Parse.Cloud.define('createSubscription', function(req, res) {
   var payment_method_nonce = req.params.payment_method_nonce
   var amount = req.params.amount
   var subscription = req.params.subscription
+
   gateway.subscription.create({
     planId: "monthly" + amount,
     paymentMethodNonce: payment_method_nonce
   }, function (err,result) {
     console.error(err)
     console.log(result)
+    var subscriptionId = result.subscription.id
+    req.user.set('braintreeSubscriptionId',subscriptionId)
+    Parse.Cloud.useMasterKey()
+    req.user.save().then( function success(obj) {
+        console.log('user ' + req.user.id + ' subscription set to ' + subscriptionId)
+        res.success(subscriptionId)
+      }, function error(err) {
+        console.error(err)
+      }
+    )
   })
 })
 
@@ -108,6 +120,7 @@ Parse.Cloud.define('makeDonation', function(req, res) {
   }, function (err,result) {
     console.error(err)
     console.log(result)
+    res.success(result)
   })
 })
 
@@ -130,8 +143,19 @@ Parse.Cloud.define('deleteAllPaymentMethods', function(req, res) {
             res.success('erased at least one paymentMethod')
           }
         })
-
       }
+    }
+  })
+})
+
+Parse.Cloud.define('cancelExistingSubscription', function(req, res) {
+  var existingSubscriptionId = req.params.subscriptionId
+  gateway.subscription.cancel(existingSubscriptionId, function (err, result) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log('canceled subscription ' + existingSubscriptionId)
+      res.success('canceled subscription ' + existingSubscriptionId)
     }
   })
 })
