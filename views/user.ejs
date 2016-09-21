@@ -5,6 +5,9 @@
     <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
     <script src="https://www.parsecdn.com/js/parse-latest.js"></script>
     <script src="/public/js/general_script.js"></script>
+    <script src="/public/js/braintree_setup.js"></script>
+    <script src="./public/js/braintree.js"></script>
+    <script>Parse.User.become()</script>
   </head>
   <body id="body">
     <header id="header">
@@ -33,15 +36,16 @@
       <div class="scene">
         <a href="/"><p>home</p></img></a>
         <p><b id="displayFirstName"></b> to your dashboard</p>
+        <script>
+          var firstname = Parse.User.current().attributes.firstname
+          document.getElementById("displayFirstName").innerHTML = "Welcome " + firstname
+        </script>
         <ul id="summary">
           <li><p style="cursor: pointer;" onclick='callDeleteAllPaymentMethods()'><u>delete all payment methods</u></p></a></li>
         </ul>
-
         <div class="payment-card">
-
             <h2>Make donation to help us fight!</h2>
-
-            <form id="donation_form" onclick="radioButtonHack()" method="post">
+            <form id="donation_form" onclick="textboxBehavior()" method="post">
                 <fieldset>
                   <div id="checkout"></div>
                     <label for="amount_10">$10</label>
@@ -70,7 +74,7 @@
                     <br>
                     <button type="submit">Pay now</button>
                     <script>
-                      function radioButtonHack() {
+                      function textboxBehavior() {
                         var amount_x = document.getElementById('amount_x')
                         var amount_x_text = document.getElementById('amount_x_text')
                         var subscription = document.getElementById('subscription')
@@ -89,73 +93,8 @@
                 </fieldset>
             </form>
         </div>
-
-        <script src="./public/js/braintree.js"></script>
-        <script>
-          Parse.Cloud.run("braintreeClientToken").then(function(clientToken) {
-            braintree.setup(clientToken, 'dropin', {
-                container: 'checkout',
-                onPaymentMethodReceived: function(result) {
-
-                  var radios = document.getElementsByName('amount');
-                  var amount
-                  for (var i = 0, length = radios.length; i < length; i++) {
-                      if (radios[i].checked) {
-                          // do whatever you want with the checked radio
-                          amount = radios[i].value
-                          // only one radio can be logically checked, don't check the rest
-                          break;
-                      }
-                  }
-
-                  var subscription
-                  if (document.getElementById('subscription').checked) {
-                    subscription = true
-                  } else {
-                    subscription = false
-                  }
-
-                  if (subscription) {
-                    Parse.Cloud.run("createSubscription", {
-                      payment_method_nonce: result.nonce,
-                      amount: amount,
-                      subscription: subscription
-                    }).then(function() {
-                      console.log('thank you for your subscription!')
-                    })
-                  } else {
-                    Parse.Cloud.run("makeDonation", {
-                      payment_method_nonce: result.nonce,
-                      amount: amount
-                    }).then(function() {
-                      console.log('thank you for your donation!')
-                    })
-                  }
-                }
-            })
-          })
-        </script>
-
-
-        <script>
-          Parse.User.become()
-
-          var firstname = Parse.User.current().attributes.firstname
-          document.getElementById("displayFirstName").innerHTML = "Welcome " + firstname
-
-          Parse.Cloud.run("personalDonations").then(function(temp) {
-            var node = document.createElement("p");
-            var textnode = document.createTextNode("youve contributed $" + (temp || "0"));
-            node.appendChild(textnode);
-            document.getElementById("summary").appendChild(node);
-          })
-          Parse.Cloud.run("totalDonations").then(function(total) {
-            var node = document.createElement("p");
-            var textnode = document.createTextNode("we have raised $" + (total || "0"));
-            node.appendChild(textnode);
-            document.getElementById("summary").appendChild(node);
-          })
-        </script>
+        <script>braintreeSetup(true)</script>
+        <script src="./public/js/donations_analysis.js"></script>
       </div>
     </div>
   </body>

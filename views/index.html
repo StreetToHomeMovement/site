@@ -39,7 +39,6 @@
               <polygon points="4,0 6,0 6,40 10,40 5,45 0,40 4,40" fill="#ffffff"></polygon>
             </svg>
           </div>
-
           <ul id="menu">
             <li id="li1" style="display:none">
               <a id="userbox" class="signin" onclick="userPageOrLogin()"></a>
@@ -54,7 +53,6 @@
                 </div>
               </div>
             </li>
-
             <script>
               var user = Parse.User.current()
               if (user) {
@@ -64,32 +62,29 @@
                 document.getElementById("userbox").text = firstname
               }
             </script>
-
           </ul>
-
           <script>
             /* When the user clicks on the button,
             toggle between hiding and showing the dropdown content */
             function myFunction() {
-                document.getElementById("myDropdown").classList.toggle("show");
+                document.getElementById("myDropdown").classList.toggle("show")
             }
 
             // Close the dropdown if the user clicks outside of it
             window.onclick = function(event) {
               if (!event.target.matches('.dropbtn')) {
 
-                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var dropdowns = document.getElementsByClassName("dropdown-content")
                 var i;
                 for (i = 0; i < dropdowns.length; i++) {
-                  var openDropdown = dropdowns[i];
+                  var openDropdown = dropdowns[i]
                   if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
+                    openDropdown.classList.remove('show')
                   }
                 }
               }
             }
-            </script>
-
+          </script>
         </section>
         <section id="mission" class="container">
           <div class="box">

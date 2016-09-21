@@ -15,6 +15,14 @@
     <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
     <script src="https://www.parsecdn.com/js/parse-latest.js"></script>
     <script src="/public/js/general_script.js"></script>
+    <script>
+      var tempLogin = '<%- tempLogin %>'
+      if (tempLogin) {
+        var email = '<%- email %>'
+        var tempPassword = '<%- tempPassword %>'
+        tempLogin(email,tempPassword)
+      }
+    </script>
   </head>
   <body id="body">
     <header id="header"></header>
@@ -39,6 +47,4 @@
       </section>
     </div>
   </body>
-  <script>
-  </script>
 </html>

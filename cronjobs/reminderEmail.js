@@ -19,11 +19,12 @@ cron.schedule('00 30 11 * * 1-5', function(){ // - Runs every weekday (Monday th
         var createdAtMoment = moment(createdAt, "YYYY-MM-DD'T'HH:mm:ss:SSSZ")
         var difference = moment(now).diff(createdAt, 'days');
         if (difference >= 5) {
+					// link needs to be changed to have production URL not just development URL
           var link = 'http://localhost:3000/setaccount/' + encodeURIComponent(email) + '/' + tempPassword
           var Mailgun = require('mailgun').Mailgun;
 
           var mg = new Mailgun('key-e0f292602a17f7ae7214409c83baba81');
-          mg.sendText('support@StreetToFightMovement.com', [`<${email}>`],
+          mg.sendText('support@StreetToHomeMovement.com', [`<${email}>`],
             'Finish making your account',
             'Click the following link to finish your account: ' + link,
             'noreply@example.com', {},

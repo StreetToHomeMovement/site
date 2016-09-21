@@ -12,7 +12,7 @@ var userController = require('./controllers/user.js')
 var errorController = require('./controllers/error.js')
 
 // run cronjob
-// require ('./cronjobs/reminderEmail.js')
+require ('./cronjobs/reminderEmail.js')
 
 var api = new ParseServer({
 	databaseURI: 'mongodb://heroku_2261fmlk:ml55j85auqbbu67m0clur0toc5@ds153835.mlab.com:53835/heroku_2261fmlk',
@@ -30,12 +30,12 @@ var api = new ParseServer({
 	/* Set the mount path as it is in serverURL */
 	publicServerURL: process.env.SERVER_URL || 'https://parse-server-codecraft-x-ample.herokuapp.com/parse', // or 'http://localhost:3000/'
 	/* This will appear in the subject and body of the emails that are sent */
-	appName: process.env.APP_NAME || "StreetToFightMovement",
+	appName: process.env.APP_NAME || "StreetToHomeMovement",
 
 	 emailAdapter: {
 	 	module: 'parse-server-simple-mailgun-adapter',
 	 	options: {
-	 		fromAddress: process.env.EMAIL_FROM || "no-reply@getsidewalk.com",
+	 		fromAddress: process.env.EMAIL_FROM || "no-reply@streetToHomeMovement.com",
 	 		domain: process.env.MAILGUN_DOMAIN || "appe8b1d4d285fe49edafea07f3c1477cb3.mailgun.org",
 			apiKey: process.env.MAILGUN_API_KEY  || "key-e0f292602a17f7ae7214409c83baba81"
 		}
