@@ -132,3 +132,12 @@ function callDeleteAllPaymentMethods() {
 		window.location.href = '/user'
 	})
 }
+
+function callCancelExistingSubscription() {
+	var existingSubscriptionId = Parse.User.current().attributes.braintreeSubscriptionId
+	Parse.Cloud.run('cancelExistingSubscription', {subscriptionId: existingSubscriptionId}).then(function(result) {
+		console.log(result)
+		alert('subscription canceled')
+		window.location.href = '/user'
+	})
+}
