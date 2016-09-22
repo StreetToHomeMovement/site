@@ -1,8 +1,8 @@
 module.exports = function(app) {
 
-  app.post('/webhooks/disbursement', function(req, res) {
+  app.post('/webhook', function(req, res) {
     // see https://developers.braintreepayments.com/reference/general/webhooks/disbursement/node
-    console.log('in total /webhooks/disbursement')
+    console.log('in total /webhook')
     console.log(req)
   })
 
