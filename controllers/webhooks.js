@@ -1,3 +1,5 @@
+var gateway = require('../helpers/braintree_gateway.js').gateway
+
 module.exports = function(app) {
 
   app.post("/webhooks/disbursement", function (req, res) {
@@ -7,9 +9,8 @@ module.exports = function(app) {
       function (err, webhookNotification) {
         console.log("[Webhook Received " + webhookNotification.timestamp + "] | Kind: " + webhookNotification.kind);
       }
-    );
+    )
     res.status(200).send();
-  });
-
+  })
 
 }
