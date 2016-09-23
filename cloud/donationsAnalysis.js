@@ -1,56 +1,26 @@
 var gateway = require('../helpers/braintree_gateway.js').gateway
 
-
-
-
-Parse.Cloud.define('totalDonations', function(req, res) {
-  Parse.Cloud.useMasterKey() // pass this as option into query
+Parse.Cloud.define('memberDonations', function(req, res) {
+  Parse.Cloud.useMasterKey()
 
   q = new Parse.Query('User')
-  q.exists('braintreeCustomerId')
+  // q.select(['firstname','totalDonations'])
+  q.exists('totalDonations')
   q.find().then(function(users) {
-    console.log('success')
+    var output = []
     for (i = 0; i < users.length; i++) {
-
-      var braintreeCustomerId = users[i].get('braintreeCustomerId')
-      var firstname = users[i].get('firstname')
-
-      // brainvault
-      var total = 0
-      var stream = gateway.transaction.search(function (search) {
-        search.customerId().is(braintreeCustomerId)
-      }, function (err, response) {
-        
-        response.each(function (err, transaction) {
-          total += transaction.amount
-        })
+      var user = users[i]
+      var totalDonations = user.get('totalDonations')
+      var firstname = user.get('firstname')
+      console.log(firstname)
+      output.push({
+        firstname: firstname || 'Anonymous',
+        totalDonations: totalDonations
       })
-
+      if (output.length === users.length) {
+        console.log('done')
+        res.success(output)
+      }
     }
   })
-})
-
-
-
-
-
-Parse.Cloud.define('personalDonations', function(req, res) {
-
-  var stream = gateway.transaction.search(
-    function (search) {
-      search.customerEmail().is(req.user.attributes.email)
-    },
-    function (err, response) {
-      var amounts = []
-      response.each(function (err, transaction) {
-        amounts.push({
-          amount: transaction.amount,
-          createdAt: transaction.createdAt
-        })
-        if (amounts.length === response.ids.length) {
-          console.log(amounts)
-        }
-      })
-    }
-  )
 })

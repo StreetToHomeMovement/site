@@ -7,6 +7,7 @@
     <script src="/public/js/general_script.js"></script>
     <script src="/public/js/braintree_setup.js"></script>
     <script src="./public/js/braintree.js"></script>
+    <script src="./public/js/calculateMemberLevel.js"></script>
     <script>Parse.User.become()</script>
   </head>
   <body id="body">
@@ -40,7 +41,7 @@
           var firstname = Parse.User.current().attributes.firstname
           document.getElementById("displayFirstName").innerHTML = "Welcome " + firstname
         </script>
-        <ul id="summary">
+        <ul id="cancel">
           <li><p style="cursor: pointer;" onclick='callDeleteAllPaymentMethods()'><u>delete all payment methods</u></p></a></li>
           <li><p style="cursor: pointer;" onclick='callCancelExistingSubscription()'><u>cancel subscription</u></p></a></li>
         </ul>
@@ -95,7 +96,23 @@
             </form>
         </div>
         <script>braintreeSetup(true)</script>
-        <script src="./public/js/donations_analysis.js"></script>
+        <ul id="memberDonations">
+        </ul>
+        <script>
+          Parse.Cloud.run("memberDonations").then(function(obj) {
+            console.log('running memberDonations Cloud Code for ' + obj.length)
+            for (i = 0; i < obj.length; i++) {
+              var firstname = obj[i].firstname
+              var totalDonations = obj[i].totalDonations
+              var level = memberLevel(totalDonations)
+              var displayText = level + ' ' + firstname + ' donated: ' + '$' + totalDonations
+
+              // KEITH YOU SHOULD CHANGE THE TAGS BELOW <li><p> IS DUMB!!!
+              var innerHTML = '<li><p>' + displayText + '</p></li>'
+              document.getElementById('memberDonations').innerHTML += innerHTML
+            }
+          })
+        </script>
       </div>
     </div>
   </body>
