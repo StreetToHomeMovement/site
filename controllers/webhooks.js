@@ -1,4 +1,5 @@
 var gateway = require('../helpers/braintree_gateway.js').gateway
+var Parse = require('../helpers/parse_server')
 
 module.exports = function(app) {
 
@@ -20,7 +21,8 @@ module.exports = function(app) {
             q = new Parse.Query("User")
             q.equalTo("braintreeCustomerId",braintreeCustomerId)
             q.first().then(function(user) {
-              user.set("totalDonations", user.get("totalDonations" + amount))
+              // update their total donations
+              user.set("totalDonations", user.get("totalDonations") + amount)
               user.save().then(
             		function success(u) {
                   console.log('totalDonations updated for user ' + user.id)
@@ -32,10 +34,6 @@ module.exports = function(app) {
             }, function(err) {
               console.error(err)
             })
-
-
-
-
         }
       }
     )
