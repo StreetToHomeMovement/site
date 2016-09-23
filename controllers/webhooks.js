@@ -16,6 +16,7 @@ module.exports = function(app) {
             var braintreeCustomerId = mostRecentTransaction.customer.id
 
             // find user in our db with matching braintreeCustomerId
+            Parse.Cloud.useMasterKey()
             q = new Parse.Query("User")
             q.equalTo("braintreeCustomerId",braintreeCustomerId)
             q.first().then(function(user) {
