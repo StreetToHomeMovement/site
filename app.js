@@ -9,8 +9,8 @@ var loginController = require('./controllers/login.js')
 var payController = require('./controllers/pay.js')
 var setaccountController = require('./controllers/setaccount.js')
 var userController = require('./controllers/user.js')
-var errorController = require('./controllers/error.js')
 var webhooksController = require('./controllers/webhooks.js')
+var errorController = require('./controllers/error.js')
 
 // run cronjob
 require ('./cronjobs/reminderEmail.js')
@@ -65,8 +65,8 @@ loginController(app)
 payController(app)
 setaccountController(app)
 userController(app)
-errorController(app)
 webhooksController(app)
+errorController(app)
 
 var port = process.env.PORT || 3000
 console.log('port: ' + port)
