@@ -65,9 +65,9 @@ Parse.Cloud.define('createCustomerWithDonation', function(req, res) {
     console.error(err)
     console.log(result)
     var customer_id = result.transaction.customer.id
-    // now that we made a transaction, lets store the
-    // email - braintree id hash in our db
+    var donation_amount = parseFloat(result.transaction.amount)
     req.user.set('braintreeCustomerId',customer_id)
+    req.user.set('totalDonations',donation_amount)
     req.user.save().then( function success(obj) {
         console.log('set user ' + req.user + ' with braintree ' + customer_id)
         res.success(customer_id)
@@ -120,7 +120,16 @@ Parse.Cloud.define('makeDonation', function(req, res) {
   }, function (err,result) {
     console.error(err)
     console.log(result)
-    res.success(result)
+    var donation_amount = parseFloat(result.transaction.amount)
+    req.user.set('totalDonations',req.user.get('totalDonations') + donation_amount)
+    Parse.Cloud.useMasterKey()
+    req.user.save().then( function success(obj) {
+        console.log('user ' + req.user.id + ' added donation_amount ' + donation_amount)
+        res.success(donation_amount)
+      }, function error(err) {
+        console.error(err)
+      }
+    )
   })
 })
 
