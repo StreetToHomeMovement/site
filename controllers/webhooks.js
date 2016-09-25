@@ -11,7 +11,7 @@ module.exports = function(app) {
       function (err, webhookNotification) {
         console.log("[Webhook Received " + webhookNotification.timestamp + "] | Kind: " + webhookNotification.kind)
         if (webhookNotification.kind === "SubscriptionChargedSuccessfully") {
-            var subscription = req.body.bt_payload
+            var subscription = webhookNotification.subscription
             var mostRecentTransaction = subscription.transactions[0]
             var amount = parseFloat(mostRecentTransaction.amount)
             var braintreeCustomerId = mostRecentTransaction.customer.id
