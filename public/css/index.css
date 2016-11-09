@@ -338,3 +338,13 @@ div.after-form-container {
 p.after-form {
   text-align: center;
 }
+
+div.sidebar-complement {
+  margin-left: 89px;
+}
+
+
+/*767 media query put width at 100%*/
+@media only screen and (max-width: 767px) {
+  div.sidebar-complement { margin-left: 0;}
+}
