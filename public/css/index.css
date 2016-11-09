@@ -5,8 +5,6 @@ html,body,address,blockquote,div,form,fieldset,caption,h1,h2,h3,h4,h5,h6,hr,ul,l
 }
 
 html {
-  /* for scaleable fonts via em/rem where 1rem = 1px */
-  font-size: 1px;
   font-family: kepler-std-display,serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -63,7 +61,7 @@ header {
 
   #sidebar-label p {
     position: absolute;
-    font-size: 16rem;
+    font-size: 16px;
     font-weight: 400;
     letter-spacing: .8px;
     transform: translateY(102.5px) rotate(-90deg);
@@ -108,32 +106,32 @@ header {
 
 #intro h1 {
   display: inline-block;
-  font-size: 72rem;
-  margin-bottom: 18rem
+  font-size: 72px;
+  margin-bottom: 18px
 }
 
 #intro h2 {
   display: inline-block;
-  font-size: 24rem;
+  font-size: 24px;
   letter-spacing: .019em
 }
 
 #scroll-indicator {
   display: block;
-  margin-top: 32rem
+  margin-top: 32px
 }
 
 #mission .box blockquote {
-  font-size: 40rem;
+  font-size: 40px;
   line-height: 1.3em;
-  margin-top: 48rem;
-  margin-bottom: 48rem;
+  margin-top: 48px;
+  margin-bottom: 48px;
   text-align: center
 }
 
 #mission-logo {
   height: 96px;
-  margin-bottom: 48rem;
+  margin-bottom: 48px;
   background-image: url('../images/logo2.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -151,14 +149,14 @@ header {
 }
 
 .text h2 {
-  font-size: 48rem;
+  font-size: 48px;
   font-weight: normal;
   line-height: 1em;
-  margin-bottom: 28rem;
+  margin-bottom: 28px;
 }
 
 .text p {
-  font-size: 18rem;
+  font-size: 18px;
   line-height: 1.5em;
   letter-spacing: .019em
 }
@@ -169,20 +167,20 @@ header {
 }
 
 .donate h2 {
-  font-size: 48rem;
+  font-size: 48px;
   font-weight: normal;
   line-height: 1em;
-  margin-bottom: 28rem;
+  margin-bottom: 28px;
 }
 
 .donate p {
-  font-size: 18rem;
+  font-size: 18px;
   line-height: 1.5em;
   letter-spacing: .019em
 }
 
 .donate a {
-  font-size: 18rem;
+  font-size: 18px;
   line-height: 1.5em;
   letter-spacing: .019em
 }
@@ -198,8 +196,8 @@ header {
 just to text is visible during testing */
 
 .login > h1,h2,label {
-  /* for scaleable fonts via em/rem where 1rem = 1px */
-  font-size: 18rem;
+  /* for scaleable fonts via em/px where 1px = 1px */
+  font-size: 18px;
   font-family: kepler-std-display,serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -217,7 +215,7 @@ just to text is visible during testing */
 }
 
 .signin {
-  font-size: 20rem;
+  font-size: 20px;
   line-height: 1.5em;
   letter-spacing: .019em;
   border-style: groove;
@@ -244,7 +242,7 @@ just to text is visible during testing */
 */
 
 .dropbtn {
-    font-size: 20rem;
+    font-size: 20px;
     line-height: 1.5em;
     letter-spacing: .019em;
     border-style: groove;
@@ -272,7 +270,7 @@ just to text is visible during testing */
 }
 
 .dropdown-content {
-    right: 1.25rem;
+    right: 1.25px;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -281,16 +279,7 @@ just to text is visible during testing */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-.dropdown-content a,p {
-    font-size: 20px;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
 .show {display:block;}
-
 
 ul {
     margin:0;
@@ -300,4 +289,52 @@ ul {
 
 ul li {
     display:inline;
+}
+
+form.user-form {
+  width: 60%;
+  background-color: white;
+}
+
+h3.user-form-header {
+  text-align: center;
+}
+
+form.form-container {
+  padding-top: 20px;
+  padding-bottom: 60px;
+  width: 60%;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 30px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.25);
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+}
+
+/*767 media query put width at 100%*/
+@media only screen and (max-width: 767px) {
+  form.form-container { width:90%;}
+}
+
+input.user-form-input {
+  width: 250px;
+  margin: 0 auto;
+  margin-bottom: 22px;
+}
+
+button.form-submit {
+  width: 250px;
+  display: block;
+  margin: 0 auto;
+}
+
+div.after-form-container {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+p.after-form {
+  text-align: center;
 }

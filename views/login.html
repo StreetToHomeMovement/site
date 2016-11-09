@@ -1,45 +1,39 @@
 <html>
-  <style>
-    input[type=text], input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-    #forgotpwd {
-      font-size: 14px;
-      float: right
-    }
-  </style>
   <head>
     <title>Street to Home Movement</title>
-    <link href="/public/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
+    <!-- Latest compiled and minified CSS -->
     <script src="https://www.parsecdn.com/js/parse-latest.js"></script>
     <script src="/public/js/general_script.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link href="/public/css/index.css" rel="stylesheet">
+
   </head>
-  <body id="body">
-    <header id="header"></header>
-    <div class="scene">
-      <section id="outreach" class="container">
-        <div class="half text">
-          <p>
-            Login to your account:
-          </p>
-            <form method="GET" action="/user">
-              <label><b>email</b></label>
-              <input id="email" type="text" placeholder="email" name="email" required>
-              <label><b>password</b></label>
-              <input id="password" type="password" placeholder="password" name="password" required>
-              <br><br>
-              <input type="button" value="login" onclick="login()">
-              <a id="forgotpwd" href="#" onclick="resetpwd()">reset password</a>
-            </form>
-        </div>
-        <div class="half payplaceholder"></div>
-      </section>
+  <body>
+    <form class="form-container">
+      <h3 class="user-form-header">Sign in to view premium content</h3><br>
+      <div class="form-group">
+        <input name="email" type="email" class="form-control user-form-input" id="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input name="password" type="password" class="form-control user-form-input" id="password" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary form-submit" onclick="login()">Sign in</button>
+    </form>
+    <div class="after-form-container">
+      <p class="after-form">
+        Know your email but not your password?
+        <a id="forgotpwd" href="#" onclick="resetpwd()">Reset password</a>
+      </p>
+      <br>
+      <p class="after-form">
+        Can't remember which email account you used?
+        <a href="#">Email support</a>
+      </p>
     </div>
+
   </body>
 </html>
