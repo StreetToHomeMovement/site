@@ -300,7 +300,7 @@ h3.user-form-header {
   text-align: center;
 }
 
-form.form-container {
+.form-container {
   padding-top: 20px;
   padding-bottom: 60px;
   width: 60%;
@@ -314,7 +314,7 @@ form.form-container {
 
 /*767 media query put width at 100%*/
 @media only screen and (max-width: 767px) {
-  form.form-container { width:90%;}
+  .form-container { width:90%;}
 }
 
 input.user-form-input {
@@ -333,6 +333,7 @@ div.after-form-container {
   width: 60%;
   margin: 0 auto;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 p.after-form {
@@ -343,8 +344,45 @@ div.sidebar-complement {
   margin-left: 89px;
 }
 
-
 /*767 media query put width at 100%*/
 @media only screen and (max-width: 767px) {
   div.sidebar-complement { margin-left: 0;}
+}
+
+form#donation-form {
+  width: 250px;
+  margin:0 auto;
+}
+
+input[name=amount] {
+    display:none
+}
+
+#donation-form label {
+    padding:0;
+    margin: 0;
+    width: 32%;
+    cursor:pointer;
+    -webkit-appearance: button;
+    /* WebKit */
+    -moz-appearance: button;
+    /* Mozilla */
+    -o-appearance: button;
+    /* Opera */
+    -ms-appearance: button;
+    /* Internet Explorer */
+    appearance: button;
+    /* CSS3 */
+}
+
+input[type=radio] + label {
+  text-align: center;
+}
+
+input[type=radio]:checked + label {
+  background-color: lightblue;
+}
+
+#donation-fieldset {
+  margin-top: 25px;
 }

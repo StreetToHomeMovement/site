@@ -1,50 +1,68 @@
 <html>
-  <style>
-    input[type=text], input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-  </style>
   <head>
     <title>Street to Home Movement</title>
-    <link href="/public/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
+    <!-- Latest compiled and minified CSS -->
     <script src="https://www.parsecdn.com/js/parse-latest.js"></script>
     <script src="/public/js/general_script.js"></script>
-    <script>
-      var tempLogin = '<%- tempLogin %>'
-      if (tempLogin) {
-        var email = '<%- email %>'
-        var tempPassword = '<%- tempPassword %>'
-        tempLogin(email,tempPassword)
-      }
-    </script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link href="/public/css/index.css" rel="stylesheet">
+
   </head>
-  <body id="body">
-    <header id="header"></header>
-    <div class="scene">
-      <section id="outreach" class="container">
-        <div class="half text">
-          <p>
-            Make account so you can login:
-          </p>
-            <form method="POST">
-              <label><b>first name</b></label>
-              <input id="firstname" type="text" placeholder="first name" name="firstname" required>
-              <label><b>last name</b></label>
-              <input id="lastname" type="text" placeholder="last name" name="lastname">
-              <label><b>password</b></label>
-              <input id="password" pattern=".{5,}" type="password" placeholder="enter password" name="password" required title="5 characters minimum">
-              <br><br>
-              <input type="button" value="set" onclick="setaccount()">
-            </form>
+  <body>
+
+    <header id="header">
+      <div id="sidebar">
+        <div id="sidebar-logo"></div>
+        <div id="sidebar-label">
+          <p>Street to Home</p>
         </div>
-        <div class="half payplaceholder"></div>
-      </section>
+        <nav id="navigation-menu">
+          <svg width="89px" height="89px">
+            <path d="M35,38 C39,38 41,38 45,38" fill="none" stroke-width="2px" stroke="#000000"></path>
+            <path d="M45,38 C49,38 51,38 55,38" fill="none" stroke-width="2px" stroke="#000000"></path>
+            <line x1="35" y1="45" x2="45" y2="45" x="0" fill="none" stroke-width="2px" stroke="#000000" stroke-opacity="1"></line>
+            <line x1="45" y1="45" x2="55" y2="45" x="10" fill="none" stroke-width="2px" stroke="#000000" stroke-opacity="1"></line>
+            <path d="M35,52 C39,52 41,52 45,52" fill="none" stroke-width="2px" stroke="#000000"></path>
+            <path d="M45,52 C49,52 51,52 55,52" fill="none" stroke-width="2px" stroke="#000000"></path>
+          </svg>
+          <ul>
+            <li>Home</li>
+            <li>About</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="sidebar-complement">
+
+      <form class="form-container">
+        <h3 class="user-form-header">Complete setting your account</h3><br>
+        <div class="form-group">
+          <input name="firstname" type="text" class="form-control user-form-input" id="firstname" placeholder="First Name" require>
+        </div>
+        <div class="form-group">
+          <input name="lastname" type="text" class="form-control user-form-input" id="lastname" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+          <input name="password" type="password" class="form-control user-form-input" id="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary form-submit" onclick="setaccount()" required title="5 characters minimum">Submit</button>
+      </form>
+      <div class="after-form-container">
+        <p class="after-form">
+          Make an account to view <a href="#">premium</a> news articles, campaign updates.
+        </p>
+        <br>
+        <p class="after-form">
+          <a href="#">Manage</a> your donations, subscriptions, and check out our progress.
+        </p>
+      </div>
+
     </div>
+
   </body>
 </html>
