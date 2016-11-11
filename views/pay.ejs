@@ -44,26 +44,28 @@
         <form id="donation-form" action="/setaccount" onclick="textboxBehavior()" method="post">
           <div id="checkout"></div>
             <fieldset id="donation-fieldset">
-              <div>
+              <div style="text-align:center">
                 <input type="radio" name="amount" id="amount_25" value="25">
-                <label for="amount_25">$25</label>
+                <label for="amount_25" class="amount">$25</label>
                 <input type="radio" name="amount" id="amount_50" value="50">
-                <label for="amount_50">$50</label>
+                <label for="amount_50" class="amount">$50</label>
                 <input type="radio" name="amount" id="amount_100" value="100">
-                <label for="amount_100">$100</label>
+                <label for="amount_100" class="amount">$100</label>
               </div>
-              <div style="margin: 0 auto;">
+              <div style="text-align:center">
                 <input type="radio" name="amount" id="amount_250" value="250">
-                <label for="amount_250">$250</label>
+                <label for="amount_250" class="amount">$250</label>
                 <input type="radio" name="amount" id="amount_500" value="500">
-                <label for="amount_500">$500</label>
+                <label for="amount_500" class="amount">$500</label>
                 <input type="radio" name="amount" id="amount_1000" value="1000">
-                <label for="amount_1000">$1000</label>
+                <label for="amount_1000" class="amount">$1000</label>
               </div>
               <div id='amount_x_container'>
                 <input type="radio" name="amount" id="amount_x" value="">
-                <label for="amount_x">$</label>
-                  <input type="text" name="amount_text" id="amount_x_text"></input>
+                <label for="amount_x" style="padding: 8px 10px 8px 2px;;">
+                  $<input type="text" name="amount_text" id="amount_x_text" style="height:30px;width:120px;color:black" onclick="document.getElementById('amount_x').checked = true">
+                </label>
+
               </div>
               <br>
               <label for="subscription">Monthly Subscription</label>

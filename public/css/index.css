@@ -349,38 +349,42 @@ div.sidebar-complement {
   div.sidebar-complement { margin-left: 0;}
 }
 
+input[name=amount] {
+    display:none
+}
+
 form#donation-form {
   width: 250px;
   margin:0 auto;
 }
 
-input[name=amount] {
-    display:none
-}
-
-#donation-form label {
-    padding:0;
-    margin: 0;
-    width: 32%;
-    cursor:pointer;
-    -webkit-appearance: button;
-    /* WebKit */
-    -moz-appearance: button;
-    /* Mozilla */
-    -o-appearance: button;
-    /* Opera */
-    -ms-appearance: button;
-    /* Internet Explorer */
-    appearance: button;
-    /* CSS3 */
+#donation-form label.amount {
+  padding: 12px 0px 12px 0px;
+  margin-bottom: 10px;
+  width: 32%;
+  cursor:pointer;
+  -webkit-appearance: button;
+  /* WebKit */
+  -moz-appearance: button;
+  /* Mozilla */
+  -o-appearance: button;
+  /* Opera */
+  -ms-appearance: button;
+  /* Internet Explorer */
+  appearance: button;
+/* CSS3 */
 }
 
 input[type=radio] + label {
   text-align: center;
+  border-radius: 4px;
+  background-color: lightgrey;
+  transition: .2s;
 }
 
 input[type=radio]:checked + label {
-  background-color: lightblue;
+  background-color: #4CAF50;
+  color: white;
 }
 
 #donation-fieldset {
