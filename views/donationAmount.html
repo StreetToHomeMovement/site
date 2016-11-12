@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <title>Street to Home Movement</title>
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="/public/css/index.css" rel="stylesheet">
+    <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
+    <script src="https://www.parsecdn.com/js/parse-latest.js"></script>
+    <script src="/public/js/general_script.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <header id="header">
+      <div id="sidebar">
+        <div id="sidebar-logo"></div>
+        <div id="sidebar-label">
+          <p>Street to Home</p>
+        </div>
+        <nav id="navigation-menu">
+          <svg width="89px" height="89px">
+            <path d="M35,38 C39,38 41,38 45,38" fill="none" stroke-width="2px" stroke="#000000"></path>
+            <path d="M45,38 C49,38 51,38 55,38" fill="none" stroke-width="2px" stroke="#000000"></path>
+            <line x1="35" y1="45" x2="45" y2="45" x="0" fill="none" stroke-width="2px" stroke="#000000" stroke-opacity="1"></line>
+            <line x1="45" y1="45" x2="55" y2="45" x="10" fill="none" stroke-width="2px" stroke="#000000" stroke-opacity="1"></line>
+            <path d="M35,52 C39,52 41,52 45,52" fill="none" stroke-width="2px" stroke="#000000"></path>
+            <path d="M45,52 C49,52 51,52 55,52" fill="none" stroke-width="2px" stroke="#000000"></path>
+          </svg>
+          <ul>
+            <li>Home</li>
+            <li>About</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+
+    <div class="form-container">
+      <h3 class="user-form-header">Make donation and join our fight!</h3><br>
+        <form id="donation-form">
+            <fieldset id="donation-fieldset">
+              <div style="text-align:center">
+                <input type="radio" name="amount" id="amount_25" value="25">
+                <label for="amount_25" class="amount">$25</label>
+                <input type="radio" name="amount" id="amount_50" value="50" checked="true">
+                <label for="amount_50" class="amount">$50</label>
+                <input type="radio" name="amount" id="amount_100" value="100">
+                <label for="amount_100" class="amount">$100</label>
+              </div>
+              <div style="text-align:center">
+                <input type="radio" name="amount" id="amount_250" value="250">
+                <label for="amount_250" class="amount">$250</label>
+                <input type="radio" name="amount" id="amount_500" value="500">
+                <label for="amount_500" class="amount">$500</label>
+                <input type="radio" name="amount" id="amount_1000" value="1000">
+                <label for="amount_1000" class="amount">$1000</label>
+              </div>
+              <div id='amount_x_container'>
+                <input type="radio" name="amount" id="amount_x" value="">
+                <label for="amount_x" style="padding: 8px 10px 8px 2px;">
+                  $<input type="text" name="amount_text" id="amount_x_text" style="height:30px;width:120px;color:black" onclick="document.getElementById('amount_x').checked = true">
+                </label>
+              </div>
+              <br>
+              <label for="subscription">Monthly Subscription</label>
+              <input type="checkbox" name="subscription" id="subscription" value="subscription">
+              <br>
+              <button class="btn btn-primary form-submit" type="button" onclick="process()">Submit</button>
+            </fieldset>
+            <script>
+               function process() {
+                 // set amount to the value of button selected, or if none
+                 // of the buttons are selected then set it to the amount
+                 // entered manually
+                 var amountSelected = document.querySelector('input[name="amount"]:checked').value
+                 var amountEntered = document.getElementById('amount_x_text').value
+                 if (amountSelected) {
+                   var amount = amountSelected
+                 } else {
+                   var amount = amountEntered
+                 }
+
+                 var subscription = document.getElementById('subscription').checked
+
+                 var s = "/paymentMethod/" + amount + '/' + subscription
+                 window.location.href = s
+               }
+            </script>
+        </form>
+    </div>
+
+    <div class="after-form-container">
+      <p class="after-form">
+        Know your email but not your password?
+        <a id="forgotpwd" href="#" onclick="resetpwd()">Reset password</a>
+      </p>
+      <br>
+      <p class="after-form">
+        Can't remember which email account you used?
+        <a href="#">Email support</a>
+      </p>
+    </div>
+
+  </body>
+</html>

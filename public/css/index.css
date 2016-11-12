@@ -83,7 +83,7 @@ header {
   }
 }
 
-.container {
+.table-container {
   display: table
 }
 
@@ -121,7 +121,7 @@ header {
   margin-top: 32px
 }
 
-#mission .box blockquote {
+#mission .box blockquote, section#join h3 {
   font-size: 40px;
   line-height: 1.3em;
   margin-top: 48px;

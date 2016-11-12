@@ -1,10 +1,13 @@
 <html>
   <head>
     <title>Street to Home Movement</title>
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="/public/css/index.css" rel="stylesheet">
     <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
     <script src="https://www.parsecdn.com/js/parse-latest.js"></script>
     <script src="/public/js/general_script.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
   <body id="body">
     <header id="header">
@@ -31,7 +34,7 @@
     </header>
     <div id="content">
       <div class="scene">
-        <section id="intro" class="container">
+        <section id="intro" class="table-container">
           <div class="box">
             <h1>Street to Home Movement</h1>
             <h2>Ending chronic street homelessness in southern Brevard County, Florida</h2>
@@ -86,20 +89,20 @@
             }
           </script>
         </section>
-        <section id="mission" class="container">
+        <section id="mission" class="table-container">
           <div class="box">
             <blockquote>We are a grassroots movement supporting those in our community that have been homeless the longest in obtaining permanent housing, recovery, and community re-integration.</blockquote>
             <div id="mission-logo"></div>
           </div>
         </section>
-        <section id="outreach" class="container">
+        <section id="outreach" class="table-container">
           <div class="half text">
             <h2>We know 109 South Brevard residents by name that have been living on our streets for over a year</h1>
             <p>Our Street Outreach Team brings housing specialists and law enforcement together to conduct planned morning, day, and night shifts to engage those living on the street and move the supportive housing process forward.</p>
           </div>
           <div class="half placeholder"></div>
         </section>
-        <section id="who" class="container">
+        <section id="who" class="table-container">
           <div class="half placeholder"></div>
           <div class="half text">
             <h2>Someone's father, mother, brother, sister, daughter, son</h1>
@@ -111,21 +114,17 @@
             </p>
           </div>
         </section>
-        <section id="join" name="join" class="container">
-          <div class="box login">
-            <form class="signup">
-            <h2>Join our revolution</h2>
-              <span class="inputgroup email">
-                <label for="email">Email Address</label>
-                <input id="email" name="email" size="48" type="email" placeholder="you@example.com" value="" required/>
-              </span>
-              <span class="inputgroup zip">
-                <label for="zip">Zip Code</label>
-                <input id="zip" name="zip" size="8" type="text" min="0" pattern="[0-9]*" placeholder="32940" value="" required/>
-              </span>
-              <button id="button" type="button" value='join' onclick="makeTempAccount()">Stop Homelessness!</button>
-            </form>
-          </div>
+        <section id="join">
+          <form style="padding-bottom:30px;">
+            <h3 class="user-form-header" style="margin-bottom:0;">Join our revolution</h3><br>
+            <div class="form-group">
+              <input id="email" name="email" type="email" class="form-control user-form-input" placeholder="Email" required/>
+            </div>
+            <div class="form-group">
+              <input id="zip" class="form-control user-form-input" name="zip" pattern="[0-9]*" type="text" placeholder="Zip" required/>
+            </div>
+            <button type="button" class="btn btn-primary form-submit" onclick="makeTempAccount()">Join</button>
+          </form>
         </section>
       </div>
     </div>

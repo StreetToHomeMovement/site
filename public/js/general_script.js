@@ -93,7 +93,7 @@ function makeTempAccount() {
   user.signUp().then(
 		function success(tempUser) {
       console.log("temp account made with id " + tempUser.id)
-			window.location.href = '/pay'
+			window.location.href = '/donationAmount'
     },
 		function error(err) {
       console.error(err)
