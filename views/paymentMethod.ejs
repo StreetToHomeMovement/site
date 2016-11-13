@@ -9,7 +9,7 @@
     <script src="https://www.parsecdn.com/js/parse-latest.js"></script>
     <script src="/public/js/general_script.js"></script>
     <script src="/public/js/braintree_setup.js"></script>
-    <script src="./public/js/braintree.js"></script>
+    <script src="/public/js/braintree.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
   </head>
@@ -37,14 +37,15 @@
       </div>
     </header>
 
-
-
+<section id="outreach" class="container">
     <div class="form-container">
       <h3 class="user-form-header">Make donation and join our fight!</h3><br>
         <form id="donation-form" action="/setaccount" method="post">
           <div id="checkout"></div>
+          <button class="btn btn-primary form-submit" type="submit">Submit</button>
         </form>
     </div>
+</section>
 
     <div class="after-form-container">
       <p class="after-form">
@@ -58,7 +59,9 @@
       </p>
     </div>
 
-    <script>braintreeSetup(false)</script>
+    <script>
+      braintreeSetup(false, <%= amount %>, <%= subscription %>)
+    </script>
 
   </body>
 </html>
