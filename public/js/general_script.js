@@ -105,22 +105,28 @@ function makeTempAccount() {
 }
 
 function setaccount() {
-	console.log("setting account");
-
+	console.log("setting account")
+	alert(1)
 	// unmangle form data
 	var firstname = document.getElementById("firstname").value
 	var lastname = document.getElementById("lastname").value
 	var password = document.getElementById("password").value
+
+	alert(2)
 
 	Parse.User.current().setPassword(password)
 	Parse.User.current().set("firstname",firstname)
 	Parse.User.current().set("lastname",lastname)
 	Parse.User.current().set("tempAccount",false)
 	Parse.User.current().set('tempPassword',null)
+	alert(3)
 	Parse.User.current().save().then( function success(obj) {
+			alert(4)
 			console.log('set account for user: ' + obj.id)
+			alert(5)
 			document.location.href = '/user'
 		}, function error(err) {
+			alert(6)
 			console.error(err)
 		}
 	)
