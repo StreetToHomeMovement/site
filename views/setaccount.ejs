@@ -17,11 +17,20 @@
 
     <header id="header">
       <div id="sidebar">
-        <div id="sidebar-logo"></div>
-        <div id="sidebar-label">
+        <a href="/"><div id="sidebar-logo"></div><a/>
+        <nav id="navigation-menu">
+          <ul>
+            <li><a href="/"><h1>Home</h1></a></li>
+            <li><a href="/login"><h1>Sign in</h1></a></li>
+            <li><a href="/" onclick="logout()"><h1>Log out</h1></a></li>
+            <li><a href="#join"><h1>Join us</h1></a></li>
+            <li><a href="#join"><h1>Contact</h1></a></li>
+          </ul>
+        </nav>
+        <div id="sidebar-label" onclick="toggleSidebar()">
           <p>Street to Home</p>
         </div>
-        <nav id="navigation-menu">
+        <div id="burger-icon" onclick="toggleSidebar()">
           <svg width="89px" height="89px">
             <path d="M35,38 C39,38 41,38 45,38" fill="none" stroke-width="2px" stroke="#000000"></path>
             <path d="M45,38 C49,38 51,38 55,38" fill="none" stroke-width="2px" stroke="#000000"></path>
@@ -30,11 +39,7 @@
             <path d="M35,52 C39,52 41,52 45,52" fill="none" stroke-width="2px" stroke="#000000"></path>
             <path d="M45,52 C49,52 51,52 55,52" fill="none" stroke-width="2px" stroke="#000000"></path>
           </svg>
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-          </ul>
-        </nav>
+        </div>
       </div>
     </header>
 
@@ -66,4 +71,21 @@
     </div>
 
   </body>
+  <script>
+    var sidebarExpanded = 0
+    var sidebar = document.getElementById('sidebar')
+    var navigationMenu = document.getElementById('navigation-menu')
+
+    function toggleSidebar() {
+      if (sidebarExpanded === 0) {
+        sidebar.style.width = "320px"
+        navigationMenu.style.display = "block"
+      } else {
+        sidebar.style.width = "89px"
+        navigationMenu.style.display = "none"
+      }
+      sidebarExpanded = (sidebarExpanded + 1)%2
+    }
+  </script>
+
 </html>

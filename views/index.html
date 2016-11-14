@@ -12,15 +12,23 @@
   <body id="body">
     <header id="header">
       <div id="sidebar">
-        <div id="sidebar-logo"></div>
+        <a href="/"><div id="sidebar-logo"></div><a/>
         <nav id="navigation-menu">
           <ul>
+            <li><a href="/user"><h1 id="myAccount">as</h1></a></li>
             <li><a href="/"><h1>Home</h1></a></li>
             <li><a href="/login"><h1>Sign in</h1></a></li>
             <li><a href="/" onclick="logout()"><h1>Log out</h1></a></li>
             <li><a href="#join"><h1>Join us</h1></a></li>
             <li><a href="#join"><h1>Contact</h1></a></li>
           </ul>
+          <script>
+            var user = Parse.User.current()
+            if (user) {
+              var firstname = user.attributes.firstname
+              document.getElementById("myAccount").innerHTML = firstname
+            }
+          </script>
         </nav>
         <div id="sidebar-label" onclick="toggleSidebar()">
           <p>Street to Home</p>
@@ -60,28 +68,6 @@
               }
             </script>
           </ul>
-          <script>
-            /* When the user clicks on the button,
-            toggle between hiding and showing the dropdown content */
-            function myFunction() {
-                document.getElementById("myDropdown").classList.toggle("show")
-            }
-
-            // Close the dropdown if the user clicks outside of it
-            window.onclick = function(event) {
-              if (!event.target.matches('.dropbtn')) {
-
-                var dropdowns = document.getElementsByClassName("dropdown-content")
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                  var openDropdown = dropdowns[i]
-                  if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show')
-                  }
-                }
-              }
-            }
-          </script>
         </section>
         <section id="mission" class="table-container">
           <div class="box">
@@ -130,7 +116,7 @@
 
     function toggleSidebar() {
       if (sidebarExpanded === 0) {
-        sidebar.style.width = "36vw"
+        sidebar.style.width = "320px"
         navigationMenu.style.display = "block"
       } else {
         sidebar.style.width = "89px"

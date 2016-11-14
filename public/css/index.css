@@ -76,8 +76,12 @@ header {
   bottom: 89px;
   border-top: 1px solid rgba(0, 0, 0, .04);
   display: none;
-
 }
+
+@media only screen and (max-width: 1023px) {
+  #navigation-menu { width:80vw;}
+}
+
 
 #navigation-menu ul {
   list-style: none;
@@ -85,10 +89,9 @@ header {
   top: 12%;
 }
 
-
 #navigation-menu li {
   padding: 6px;
-  margin-left: 60px;
+  margin-left: 40px;
 }
 
 #navigation-menu li * {
@@ -103,12 +106,9 @@ header {
   border-top: 1px solid rgba(0, 0, 0, 0.0392157)
 }
 
-
-
-
-
-
-
+#sidebar-logo:hover, #sidebar-label:hover, #burger-icon:hover {
+  cursor: pointer;
+}
 
 
 
