@@ -172,10 +172,19 @@ header {
   background-position: 50% 50%
 }
 
+
+
+
 .half {
   display: table-cell;
   width: 50%
 }
+
+
+
+
+
+
 
 .text {
   padding: 5%;

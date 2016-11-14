@@ -55,19 +55,6 @@
               <polygon points="4,0 6,0 6,40 10,40 5,45 0,40 4,40" fill="#ffffff"></polygon>
             </svg>
           </div>
-          <ul id="menu">
-            <li id="li1" style="display:none">
-              <a id="userbox" class="signin" onclick="userPageOrLogin()"></a>
-            </li>
-            <script>
-              var user = Parse.User.current()
-              if (user) {
-                var firstname = user.attributes.firstname
-                document.getElementById("li1").style.display = "inline"
-                document.getElementById("userbox").text = firstname
-              }
-            </script>
-          </ul>
         </section>
         <section id="mission" class="table-container">
           <div class="box">
@@ -77,7 +64,7 @@
         </section>
         <section id="outreach" class="table-container">
           <div class="half text">
-            <h2>We know 109 South Brevard residents by name that have been living on our streets for over a year</h1>
+            <h2>We know 109 South Brevard residents by name that have been living on our streets for over a year</h2>
             <p>Our Street Outreach Team brings housing specialists and law enforcement together to conduct planned morning, day, and night shifts to engage those living on the street and move the supportive housing process forward.</p>
           </div>
           <div class="half placeholder"></div>
@@ -85,7 +72,7 @@
         <section id="who" class="table-container">
           <div class="half placeholder"></div>
           <div class="half text">
-            <h2>Someone's father, mother, brother, sister, daughter, son</h1>
+            <h2>Someone's father, mother, brother, sister, daughter, son</h2>
             <p>
               Each person experiencing homelessness is someone: someone's father, mother, brother, sister, daughter, son.
               Someone capable of change.
