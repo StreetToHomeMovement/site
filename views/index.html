@@ -13,10 +13,19 @@
     <header id="header">
       <div id="sidebar">
         <div id="sidebar-logo"></div>
+        <nav id="navigation-menu">
+          <ul>
+            <li><a href="/"><h1>Home</h1></a></li>
+            <li><a href="/login"><h1>Sign in</h1></a></li>
+            <li><a href="/" onclick="logout()"><h1>Log out</h1></a></li>
+            <li><a href="#join"><h1>Join us</h1></a></li>
+            <li><a href="#join"><h1>Contact</h1></a></li>
+          </ul>
+        </nav>
         <div id="sidebar-label">
           <p>Street to Home</p>
         </div>
-        <nav id="navigation-menu">
+        <div id="burger-icon">
           <svg width="89px" height="89px">
             <path d="M35,38 C39,38 41,38 45,38" fill="none" stroke-width="2px" stroke="#000000"></path>
             <path d="M45,38 C49,38 51,38 55,38" fill="none" stroke-width="2px" stroke="#000000"></path>
@@ -25,11 +34,7 @@
             <path d="M35,52 C39,52 41,52 45,52" fill="none" stroke-width="2px" stroke="#000000"></path>
             <path d="M45,52 C49,52 51,52 55,52" fill="none" stroke-width="2px" stroke="#000000"></path>
           </svg>
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-          </ul>
-        </nav>
+        </div>
       </div>
     </header>
     <div id="content">
@@ -46,22 +51,11 @@
             <li id="li1" style="display:none">
               <a id="userbox" class="signin" onclick="userPageOrLogin()"></a>
             </li>
-            <li>
-              <div class="dropdown">
-              <a class="dropbtn" onclick="myFunction()">...</a>
-                <div id="myDropdown" class="dropdown-content">
-                  <a href="/login">Login</a>
-                  <a id="logout" href="/" style="display:none" onclick="logout()">Logout</p>
-                  <a href="#join">New account</a>
-                </div>
-              </div>
-            </li>
             <script>
               var user = Parse.User.current()
               if (user) {
                 var firstname = user.attributes.firstname
                 document.getElementById("li1").style.display = "inline"
-                document.getElementById("logout").style.display = "inline"
                 document.getElementById("userbox").text = firstname
               }
             </script>

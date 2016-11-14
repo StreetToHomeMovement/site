@@ -23,11 +23,23 @@ header {
   position: absolute
 }
 
+#content {
+  margin-left: 8px
+}
+
+
+
+
+
+
+
 #sidebar {
   position: fixed;
+  border-right: 1px solid rgba(0,0,0,.08);
+  width: 89px;
+  width: 400px;
   top: 0;
   bottom: 0;
-  width: 8px;
   background-color: rgb(255, 255, 255)
 }
 
@@ -37,51 +49,66 @@ header {
   background-image: url('../images/logo.png');
   background-repeat: no-repeat;
   background-size: 70px 70px;
-  background-position: 10px 10px
+  background-position: 10px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, .04)
 }
+
+#sidebar-label {
+  position: absolute;
+  width: 89px;
+  height: 400px;
+  top: 50vh;
+  right: 0;
+}
+
+#sidebar-label p {
+  position: absolute;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .8px;
+  transform: translateY(0) rotate(-90deg);
+  text-transform: uppercase;
+  text-align: center;
+  height: 0;
+  width: 400px;
+  left: -166px
+}
+
+#navigation-menu {
+  position: absolute;
+  height: 100%;
+  top: 35%;
+  border-top: 1px solid rgba(0, 0, 0, .04);
+}
+
+#navigation-menu ul {
+  list-style: none;
+}
+
+
+#navigation-menu li {
+  padding: 4px;
+  margin-left: 40px;
+}
+
+#burger-icon {
+  position: absolute;
+  bottom: 0;
+}
+
+
+
+
+
+
+
+
+
 
 #content {
-  margin-left: 8px
+  margin-left: 90px
 }
 
-@media screen and (min-width: 768px) {
-  #sidebar {
-    border-right: 1px solid rgba(0,0,0,.08);
-    width: 89px
-  }
-
-  #sidebar-logo {
-    border-bottom: 1px solid rgba(0, 0, 0, .04)
-  }
-
-  #sidebar-label {
-    position: absolute;
-    top: 30vh
-  }
-
-  #sidebar-label p {
-    position: absolute;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: .8px;
-    transform: translateY(102.5px) rotate(-90deg);
-    text-transform: uppercase;
-    text-align: center;
-    height: 0;
-    width: 400px;
-    left: -166px
-  }
-
-  #navigation-menu {
-    position: fixed;
-    border-top: 1px solid rgba(0, 0, 0, .04);
-    bottom: 0
-  }
-
-  #content {
-    margin-left: 90px
-  }
-}
 
 .table-container {
   display: table
@@ -280,16 +307,6 @@ just to text is visible during testing */
 }
 
 .show {display:block;}
-
-ul {
-    margin:0;
-    list-style-type: none;
-    text-align:center;
-}
-
-ul li {
-    display:inline;
-}
 
 form.user-form {
   width: 60%;
