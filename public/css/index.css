@@ -29,15 +29,10 @@ header {
 
 
 
-
-
-
-
 #sidebar {
   position: fixed;
   border-right: 1px solid rgba(0,0,0,.08);
   width: 89px;
-  width: 400px;
   top: 0;
   bottom: 0;
   background-color: rgb(255, 255, 255)
@@ -45,7 +40,7 @@ header {
 
 #sidebar-logo {
   height: 89px;
-  width: 89px;
+  width: 100%;
   background-image: url('../images/logo.png');
   background-repeat: no-repeat;
   background-size: 70px 70px;
@@ -56,9 +51,9 @@ header {
 #sidebar-label {
   position: absolute;
   width: 89px;
-  height: 400px;
-  top: 50vh;
   right: 0;
+  top: 89px;
+  bottom: 89px;
 }
 
 #sidebar-label p {
@@ -71,29 +66,40 @@ header {
   text-align: center;
   height: 0;
   width: 400px;
-  left: -166px
+  left: -166px;
+  top: 50%;
 }
 
 #navigation-menu {
   position: absolute;
-  height: 100%;
-  top: 35%;
+  top: 89px;
+  bottom: 89px;
   border-top: 1px solid rgba(0, 0, 0, .04);
+  display: none;
+
 }
 
 #navigation-menu ul {
   list-style: none;
+  position: absolute;
+  top: 12%;
 }
 
 
 #navigation-menu li {
-  padding: 4px;
-  margin-left: 40px;
+  padding: 6px;
+  margin-left: 60px;
+}
+
+#navigation-menu li * {
+  color: black;
+  font-size: 45px;
 }
 
 #burger-icon {
   position: absolute;
   bottom: 0;
+  width: 100%;
 }
 
 
