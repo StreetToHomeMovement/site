@@ -10,10 +10,12 @@ Parse.Cloud.define('memberDonations', function(req, res) {
     var output = []
     for (i = 0; i < users.length; i++) {
       var user = users[i]
-      var totalDonations = user.get('totalDonations')
+      var j = user.get('firstname')
       var firstname = user.get('firstname')
+      var totalDonations = user.get('totalDonations')
       console.log(firstname)
       output.push({
+        j: j,
         firstname: firstname || 'Anonymous',
         totalDonations: totalDonations
       })

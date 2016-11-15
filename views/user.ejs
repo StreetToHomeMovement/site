@@ -12,72 +12,38 @@
     </header>
 
     <div id="content">
-      <div class="form-container">
-        <h3 class="user-form-header">Make donation and join our fight!</h3><br>
-          <form id="donation-form">
-              <fieldset id="donation-fieldset">
-                <div style="text-align:center">
-                  <input type="radio" name="amount" id="amount_25" value="25">
-                  <label for="amount_25" class="amount">$25</label>
-                  <input type="radio" name="amount" id="amount_50" value="50" checked="true">
-                  <label for="amount_50" class="amount">$50</label>
-                  <input type="radio" name="amount" id="amount_100" value="100">
-                  <label for="amount_100" class="amount">$100</label>
-                </div>
-                <div style="text-align:center">
-                  <input type="radio" name="amount" id="amount_250" value="250">
-                  <label for="amount_250" class="amount">$250</label>
-                  <input type="radio" name="amount" id="amount_500" value="500">
-                  <label for="amount_500" class="amount">$500</label>
-                  <input type="radio" name="amount" id="amount_1000" value="1000">
-                  <label for="amount_1000" class="amount">$1000</label>
-                </div>
-                <div id='amount_x_container'>
-                  <input type="radio" name="amount" id="amount_x" value="">
-                  <label for="amount_x" style="padding: 8px 10px 8px 2px;">
-                    $<input type="text" name="amount_text" id="amount_x_text" style="height:30px;width:120px;color:black" onclick="document.getElementById('amount_x').checked = true">
-                  </label>
-                </div>
-                <br>
-                <label for="subscription">Monthly Subscription</label>
-                <input type="checkbox" name="subscription" id="subscription" value="subscription">
-                <br>
-                <button class="btn btn-primary form-submit" type="button" onclick="process()">Submit</button>
-              </fieldset>
-              <script>
-                 function process() {
-                   // set amount to the value of button selected, or if none
-                   // of the buttons are selected then set it to the amount
-                   // entered manually
-                   var amountSelected = document.querySelector('input[name="amount"]:checked').value
-                   var amountEntered = document.getElementById('amount_x_text').value
-                   if (amountSelected) {
-                     var amount = amountSelected
-                   } else {
-                     var amount = amountEntered
-                   }
 
-                   var subscription = document.getElementById('subscription').checked
+      <style>
+        table {
+            width: 100%;
+        }
 
-                   var s = "/paymentMethod/" + amount + '/' + subscription
-                   window.location.href = s
-                 }
-              </script>
-          </form>
-      </div>
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
 
-      <div class="after-form-container">
-        <p class="after-form">
-          <a href='#' onclick='callDeleteAllPaymentMethods()'>Delete all payment methods </a>
-          if you don't want us to save your payment information.
-        </p>
-        <br>
-        <p class="after-form">
-          <a href='#' onclick='callCancelExistingSubscription()'>Cancel </a>
-          all of your subscriptions.
-        </p>
-      </div>
+      </style>
+
+      <table>
+        <tr>
+          <th>Member</th>
+          <th>Joined</th>
+          <th>Donated</th>
+        </tr>
+        <% for (i = 0; i < members.length; i++) { %>
+          <script>console.log('<%= members[i].j %>')</script>
+          <% var opacity = Math.pow(members[i].totalDonations/1000000,.15) %>
+          <tr style="background-color:rgba(76,175,80,<%= opacity %>)">
+            <td><%= members[i].firstname %></td>
+            <td><%= members[i].firstname %></td>
+            <td>$<%= members[i].totalDonations %></td>
+          </tr>
+        <% } %>
+      </table>
 
     </div>
   </body>
+
 </html>
