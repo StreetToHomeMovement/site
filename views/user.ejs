@@ -1,141 +1,83 @@
 <html>
-  <head>
-    <title>Street to Home Movement</title>
-    <link href="/public/css/index.css" rel="stylesheet">
-    <script>try { Typekit.load({ async: true }); } catch(e) {}</script>
-    <script src="https://www.parsecdn.com/js/parse-latest.js"></script>
-    <script src="/public/js/general_script.js"></script>
-    <script src="/public/js/braintree_setup.js"></script>
-    <script src="./public/js/braintree.js"></script>
-    <script src="./public/js/calculateMemberLevel.js"></script>
-    <script>Parse.User.become()</script>
-  </head>
+
+<head>
+  <title>Members</title>
+  <% include ./partials/head %>
+</head>
+
   <body id="body">
+
     <header id="header">
-      <div id="sidebar">
-        <a href="/"><div id="sidebar-logo"></div><a/>
-        <nav id="navigation-menu">
-          <ul>
-            <li><a href="/"><h1>Home</h1></a></li>
-            <li><a href="/login"><h1>Sign in</h1></a></li>
-            <li><a href="/" onclick="logout()"><h1>Log out</h1></a></li>
-            <li><a href="#join"><h1>Join us</h1></a></li>
-            <li><a href="#join"><h1>Contact</h1></a></li>
-          </ul>
-        </nav>
-        <div id="sidebar-label" onclick="toggleSidebar()">
-          <p>Street to Home</p>
-        </div>
-        <div id="burger-icon" onclick="toggleSidebar()">
-          <svg width="89px" height="89px">
-            <path d="M35,38 C39,38 41,38 45,38" fill="none" stroke-width="2px" stroke="#000000"></path>
-            <path d="M45,38 C49,38 51,38 55,38" fill="none" stroke-width="2px" stroke="#000000"></path>
-            <line x1="35" y1="45" x2="45" y2="45" x="0" fill="none" stroke-width="2px" stroke="#000000" stroke-opacity="1"></line>
-            <line x1="45" y1="45" x2="55" y2="45" x="10" fill="none" stroke-width="2px" stroke="#000000" stroke-opacity="1"></line>
-            <path d="M35,52 C39,52 41,52 45,52" fill="none" stroke-width="2px" stroke="#000000"></path>
-            <path d="M45,52 C49,52 51,52 55,52" fill="none" stroke-width="2px" stroke="#000000"></path>
-          </svg>
-        </div>
-      </div>
+      <% include ./partials/header %>
     </header>
+
     <div id="content">
-      <div class="scene">
-        <a href="/"><p>home</p></img></a>
-        <p><b id="displayFirstName"></b> to your dashboard</p>
-        <script>
-          var firstname = Parse.User.current().attributes.firstname
-          document.getElementById("displayFirstName").innerHTML = "Welcome " + firstname
-        </script>
-        <ul id="cancel">
-          <li><p style="cursor: pointer;" onclick='callDeleteAllPaymentMethods()'><u>delete all payment methods</u></p></a></li>
-          <li><p style="cursor: pointer;" onclick='callCancelExistingSubscription()'><u>cancel subscription</u></p></a></li>
-        </ul>
-        <div class="payment-card">
-            <h2>Make donation to help us fight!</h2>
-            <form id="donation_form" onclick="textboxBehavior()" method="post">
-                <fieldset>
-                  <div id="checkout"></div>
-                    <label for="amount_10">$10</label>
-                    <input type="radio" name="amount" id="amount_10" value="10">
-                    <label for="amount_25">$25</label>
-                    <input type="radio" name="amount" id="amount_25" value="25">
-                    <label for="amount_50">$50</label>
-                    <input type="radio" name="amount" id="amount_50" value="50">
-                    <label for="amount_100">$100</label>
-                    <input type="radio" name="amount" id="amount_100" value="100">
-                    <br>
-                    <label for="amount_250">$250</label>
-                    <input type="radio" name="amount" id="amount_250" value="250">
-                    <label for="amount_500">$500</label>
-                    <input type="radio" name="amount" id="amount_500" value="500">
-                    <label for="amount_1000">$1000</label>
-                    <input type="radio" name="amount" id="amount_1000" value="1000">
-                    <div id='amount_x_container'>
-                      <label for="amount_x">$</label>
-                      <input type="radio" name="amount" id="amount_x" value="">
-                        <input type="text" name="amount_text" id="amount_x_text"></input>
-                    </div>
-                    <br>
-                    <label for="subscription">Monthly Subscription</label>
-                    <input type="checkbox" name="subscription" id="subscription" value="subscription">
-                    <br>
-                    <button type="submit">Pay now</button>
-                    <script>
-                      function textboxBehavior() {
-                        var amount_x = document.getElementById('amount_x')
-                        var amount_x_text = document.getElementById('amount_x_text')
-                        var subscription = document.getElementById('subscription')
-                        var amount_x_container = document.getElementById('amount_x_container')
+      <div class="form-container">
+        <h3 class="user-form-header">Make donation and join our fight!</h3><br>
+          <form id="donation-form">
+              <fieldset id="donation-fieldset">
+                <div style="text-align:center">
+                  <input type="radio" name="amount" id="amount_25" value="25">
+                  <label for="amount_25" class="amount">$25</label>
+                  <input type="radio" name="amount" id="amount_50" value="50" checked="true">
+                  <label for="amount_50" class="amount">$50</label>
+                  <input type="radio" name="amount" id="amount_100" value="100">
+                  <label for="amount_100" class="amount">$100</label>
+                </div>
+                <div style="text-align:center">
+                  <input type="radio" name="amount" id="amount_250" value="250">
+                  <label for="amount_250" class="amount">$250</label>
+                  <input type="radio" name="amount" id="amount_500" value="500">
+                  <label for="amount_500" class="amount">$500</label>
+                  <input type="radio" name="amount" id="amount_1000" value="1000">
+                  <label for="amount_1000" class="amount">$1000</label>
+                </div>
+                <div id='amount_x_container'>
+                  <input type="radio" name="amount" id="amount_x" value="">
+                  <label for="amount_x" style="padding: 8px 10px 8px 2px;">
+                    $<input type="text" name="amount_text" id="amount_x_text" style="height:30px;width:120px;color:black" onclick="document.getElementById('amount_x').checked = true">
+                  </label>
+                </div>
+                <br>
+                <label for="subscription">Monthly Subscription</label>
+                <input type="checkbox" name="subscription" id="subscription" value="subscription">
+                <br>
+                <button class="btn btn-primary form-submit" type="button" onclick="process()">Submit</button>
+              </fieldset>
+              <script>
+                 function process() {
+                   // set amount to the value of button selected, or if none
+                   // of the buttons are selected then set it to the amount
+                   // entered manually
+                   var amountSelected = document.querySelector('input[name="amount"]:checked').value
+                   var amountEntered = document.getElementById('amount_x_text').value
+                   if (amountSelected) {
+                     var amount = amountSelected
+                   } else {
+                     var amount = amountEntered
+                   }
 
-                        amount_x.value = amount_x_text.value
+                   var subscription = document.getElementById('subscription').checked
 
-                        if (subscription.checked) {
-                          amount_x_container.style.display = 'none'
-                          amount_x.checked = false
-                        } else {
-                          amount_x_container.style.display = 'block'
-                        }
-                      }
-                    </script>
-                </fieldset>
-            </form>
-        </div>
-        <script>braintreeSetup(true)</script>
-        <ul id="memberDonations">
-        </ul>
-        <script>
-          Parse.Cloud.run("memberDonations").then(function(obj) {
-            console.log('running memberDonations Cloud Code for ' + obj.length)
-            for (i = 0; i < obj.length; i++) {
-              var firstname = obj[i].firstname
-              var totalDonations = obj[i].totalDonations
-              var level = memberLevel(totalDonations)
-              var displayText = level + ' ' + firstname + ' donated: ' + '$' + totalDonations
-
-              // KEITH YOU SHOULD CHANGE THE TAGS BELOW <li><p> IS DUMB!!!
-              var innerHTML = '<li><p>' + displayText + '</p></li>'
-              document.getElementById('memberDonations').innerHTML += innerHTML
-            }
-          })
-        </script>
+                   var s = "/paymentMethod/" + amount + '/' + subscription
+                   window.location.href = s
+                 }
+              </script>
+          </form>
       </div>
+
+      <div class="after-form-container">
+        <p class="after-form">
+          <a href='#' onclick='callDeleteAllPaymentMethods()'>Delete all payment methods </a>
+          if you don't want us to save your payment information.
+        </p>
+        <br>
+        <p class="after-form">
+          <a href='#' onclick='callCancelExistingSubscription()'>Cancel </a>
+          all of your subscriptions.
+        </p>
+      </div>
+
     </div>
   </body>
-  <script>
-    var sidebarExpanded = 0
-    var sidebar = document.getElementById('sidebar')
-    var navigationMenu = document.getElementById('navigation-menu')
-
-    function toggleSidebar() {
-      if (sidebarExpanded === 0) {
-        sidebar.style.width = "320px"
-        navigationMenu.style.display = "block"
-      } else {
-        sidebar.style.width = "89px"
-        navigationMenu.style.display = "none"
-      }
-      sidebarExpanded = (sidebarExpanded + 1)%2
-    }
-  </script>
-
 </html>

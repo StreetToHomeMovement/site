@@ -155,7 +155,7 @@ header {
   margin-top: 32px
 }
 
-#mission .box blockquote, section#join h3 {
+#mission .box blockquote, section#join h3.user-form-header {
   font-size: 40px;
   line-height: 1.3em;
   margin-top: 48px;
@@ -331,6 +331,7 @@ form.user-form {
 
 h3.user-form-header {
   text-align: center;
+  font-size: 2rem;
 }
 
 .form-container {

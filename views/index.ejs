@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Street to Home Movement</title>
+    <% include ./partials/head %>
+  </head>
+  <body id="body">
+    <header id="header">
+      <% include ./partials/header %>
+    </header>
+    <div id="content">
+      <div class="scene">
+        <section id="intro" class="table-container">
+          <div class="box">
+            <h1>Street to Home Movement</h1>
+            <h2>Ending chronic street homelessness in southern Brevard County, Florida</h2>
+            <svg id="scroll-indicator" width="10px" height="45px">
+              <polygon points="4,0 6,0 6,40 10,40 5,45 0,40 4,40" fill="#ffffff"></polygon>
+            </svg>
+          </div>
+        </section>
+        <section id="mission" class="table-container">
+          <div class="box">
+            <blockquote>We are a grassroots movement supporting those in our community that have been homeless the longest in obtaining permanent housing, recovery, and community re-integration.</blockquote>
+            <div id="mission-logo"></div>
+          </div>
+        </section>
+        <section id="outreach" class="table-container">
+          <div class="half text">
+            <h2>We know 109 South Brevard residents by name that have been living on our streets for over a year</h2>
+            <p>Our Street Outreach Team brings housing specialists and law enforcement together to conduct planned morning, day, and night shifts to engage those living on the street and move the supportive housing process forward.</p>
+          </div>
+          <div class="half placeholder"></div>
+        </section>
+        <section id="who" class="table-container">
+          <div class="half placeholder"></div>
+          <div class="half text">
+            <h2>Someone's father, mother, brother, sister, daughter, son</h2>
+            <p>
+              Each person experiencing homelessness is someone: someone's father, mother, brother, sister, daughter, son.
+              Someone capable of change.
+              Our team of support professionals focuses on evoking each person's own ability for change.
+              And change starts with a home.
+            </p>
+          </div>
+        </section>
+        <section id="join">
+          <form style="padding-bottom:30px;">
+            <h3 class="user-form-header" style="margin-bottom:0;">Join our revolution</h3><br>
+            <div class="form-group">
+              <input id="email" name="email" type="email" class="form-control user-form-input" placeholder="Email" required/>
+            </div>
+            <div class="form-group">
+              <input id="zip" class="form-control user-form-input" name="zip" pattern="[0-9]*" type="text" placeholder="Zip" required/>
+            </div>
+            <button type="button" class="btn btn-primary form-submit" onclick="makeTempAccount()">Join</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
