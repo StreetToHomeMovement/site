@@ -418,7 +418,12 @@ form#donation-form {
 
 #donation-form input#amount_x_text {
   padding: 0;
+  width: 49px;
+}
+
+#donation-form input#amount_x_text:focus {
   width: 69px;
+  transition: .5s;
 }
 
 .left {
