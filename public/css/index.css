@@ -23,12 +23,6 @@ header {
   position: absolute
 }
 
-#content {
-  margin-left: 8px
-}
-
-
-
 #sidebar {
   position: fixed;
   border-right: 1px solid rgba(0,0,0,.08);
@@ -79,9 +73,8 @@ header {
 }
 
 @media only screen and (max-width: 1023px) {
-  #navigation-menu { width:80vw;}
+  #navigation-menu { width:80vw;},
 }
-
 
 #navigation-menu ul {
   list-style: none;
@@ -110,12 +103,24 @@ header {
   cursor: pointer;
 }
 
-
-
 #content {
   margin-left: 90px
 }
 
+@media only screen and (max-width: 767px) {
+  #sidebar { width:0;}
+}
+
+@media only screen and (max-width: 767px) {
+  #content { margin-left: 0;}
+}
+
+@media only screen and (max-width: 767px) {
+  #burger-icon {
+    top: -20px;
+    left: -20px;
+  }
+}
 
 .table-container {
   display: table
@@ -454,4 +459,14 @@ input[type=radio]:checked + label {
 
 #donation-fieldset {
   margin-top: 25px;
+}
+
+table {
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }

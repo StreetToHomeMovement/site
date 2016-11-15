@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <title>Members</title>
+  <% include ./partials/head %>
+</head>
+
+  <body id="body">
+
+    <header id="header">
+      <% include ./partials/header %>
+    </header>
+
+    <div id="content">
+
+      <table>
+        <tr>
+          <th>Member</th>
+          <th>Joined</th>
+          <th>Donated</th>
+        </tr>
+        <% for (i = 0; i < members.length; i++) { %>
+          <% var opacity = Math.pow(members[i].totalDonations/1000000,.15) %>
+          <tr style="background-color:rgba(76,175,80,<%= opacity %>)">
+            <td><%= members[i].firstname %></td>
+            <td><%= members[i].firstname %></td>
+            <td>$<%= members[i].totalDonations %></td>
+          </tr>
+        <% } %>
+      </table>
+
+    </div>
+  </body>
+
+</html>
