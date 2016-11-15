@@ -352,13 +352,13 @@ h3.user-form-header {
 }
 
 input.user-form-input {
-  width: 250px;
+  width: 300px;
   margin: 0 auto;
   margin-bottom: 22px;
 }
 
 button.form-submit {
-  width: 250px;
+  width: 300px;
   display: block;
   margin: 0 auto;
 }
@@ -388,14 +388,14 @@ input[name=amount] {
 }
 
 form#donation-form {
-  width: 250px;
+  width: 300px;
   margin:0 auto;
 }
 
 #donation-form label.amount {
   padding: 12px 0px 12px 0px;
-  margin-bottom: 10px;
-  width: 32%;
+  margin-bottom: 20px;
+  width: 45%;
   cursor:pointer;
   -webkit-appearance: button;
   /* WebKit */
@@ -407,6 +407,32 @@ form#donation-form {
   /* Internet Explorer */
   appearance: button;
 /* CSS3 */
+}
+
+#donation-form label#amount_x_label {
+  padding: 9px 0 9px 0;
+  width: 45%;
+  border: 1px solid grey;
+  border-radius: 1px;
+}
+
+#donation-form input#amount_x_text {
+  padding: 0;
+  width: 69px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+span#subscriptionWarning {
+  font-size:13px;
+  color:red;
+  display: none;
 }
 
 input[type=radio] + label {
