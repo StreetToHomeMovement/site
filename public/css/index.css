@@ -240,8 +240,10 @@ header {
   background-position: 50% 50%
 }
 
-/*Darren adding everything below this temporarily
-just to text is visible during testing */
+/*767 media query put width at 100%*/
+@media only screen and (max-width: 767px) {
+  .placeholder { display: none;}
+}
 
 .login > h1,h2,label {
   /* for scaleable fonts via em/px where 1px = 1px */
@@ -429,14 +431,6 @@ form#donation-form {
 #donation-form input#amount_x_text:focus {
   width: 69px;
   transition: .5s;
-}
-
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
 }
 
 span#subscriptionWarning {
