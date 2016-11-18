@@ -464,3 +464,11 @@ td, th {
     text-align: left;
     padding: 8px;
 }
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
