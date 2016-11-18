@@ -1,6 +1,6 @@
 <!-- views/partials/header.ejs -->
 
-<div id="sidebar">
+<div id="sidebar" class="normal-collapsed">
   <a href="/"><div id="sidebar-logo"></div><a/>
   <nav id="navigation-menu">
     <ul>
@@ -34,10 +34,10 @@
 
   function toggleSidebar() {
     if (sidebarExpanded === 0) {
-      sidebar.style.width = "320px"
+      sidebar.className = "expanded"
       navigationMenu.style.display = "block"
     } else {
-      sidebar.style.width = "89px"
+      sidebar.className = ""
       navigationMenu.style.display = "none"
     }
     sidebarExpanded = (sidebarExpanded + 1)%2

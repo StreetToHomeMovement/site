@@ -32,13 +32,21 @@ header {
   background-color: rgb(255, 255, 255)
 }
 
+@media only screen and (max-width: 767px) {
+  #sidebar { width:0;}
+}
+
+#sidebar[class="expanded"] {
+  width: 320px;
+}
+
 #sidebar-logo {
   height: 89px;
   width: 100%;
   background-image: url('../images/logo.png');
   background-repeat: no-repeat;
   background-size: 70px 70px;
-  background-position: 10px 10px;
+  background-position: right 10px center;
   border-bottom: 1px solid rgba(0, 0, 0, .04)
 }
 
@@ -108,10 +116,6 @@ header {
 }
 
 @media only screen and (max-width: 767px) {
-  #sidebar { width:0;}
-}
-
-@media only screen and (max-width: 767px) {
   #content { margin-left: 0;}
 }
 
@@ -119,6 +123,7 @@ header {
   #burger-icon {
     top: -20px;
     left: -20px;
+    float: right;
   }
 }
 
