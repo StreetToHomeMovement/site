@@ -4,12 +4,8 @@
   <a href="/"><div id="sidebar-logo"></div><a/>
   <nav id="navigation-menu">
     <ul>
-      <li><a href="/"><h1>Home</h1></a></li>
-      <li><a href="/news"><h1>News</h1></a></li>
-      <li><a href="/donationAmount"><h1>Donate</h1></a></li>
-      <li><a href="/members"><h1>Members</h1></a></li>
-      <li><a href="#"><h1>Contact</h1></a></li>
-      <li><a href="/" onclick="logout()"><h1>Log out</h1></a></li>
+      <!-- script below adds li's in the format below: -->
+      <li><a><h1></h1></a></li>
     </ul>
   </nav>
   <div id="sidebar-label" onclick="toggleSidebar()">
@@ -26,6 +22,33 @@
     </svg>
   </div>
 </div>
+
+<script>
+  var loggedIn = Parse.User.current() != null
+  if (loggedIn) {
+    console.log('logged in')
+    var s = '<ul>'
+    s += '<li><a href="/"><h1>Home</h1></a></li>'
+    s += '<li><a href="/news"><h1>News</h1></a></li>'
+    s += '<li><a href="/donationAmount"><h1>Donate</h1></a></li>'
+    s += '<li><a href="/members"><h1>Members</h1></a></li>'
+    s += '<li><a href="#"><h1>About</h1></a></li>'
+    s += '<li><a href="#"><h1>Contact</h1></a></li>'
+    s += '<li><a href="/" onclick="logout()"><h1>Log out</h1></a></li>'
+    s += '</ul>'
+  } else {
+    console.log('logged out')
+    var s = '<ul>'
+    s += '<li><a href="/"><h1>Home</h1></a></li>'
+    s += '<li><a href="/login"><h1>Sign in</h1></a></li>'
+    s += '<li><a href="/donationAmount"><h1>Donate</h1></a></li>'
+    s += '<li><a href="#"><h1>About</h1></a></li>'
+    s += '<li><a href="#"><h1>Contact</h1></a></li>'
+    s += '</ul>'
+  }
+  document.getElementById('navigation-menu').innerHTML = s
+</script>
+
 
 <script>
   var sidebarExpanded = 0
