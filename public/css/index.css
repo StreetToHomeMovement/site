@@ -100,6 +100,8 @@ header {
 }
 
 #burger-icon {
+  width: 89px;
+  height: 89px;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -110,8 +112,6 @@ header {
   #burger-icon {
     top: -20px;
     left: -20px;
-    width: 89px;
-    height: 89px;
   }
 }
 
