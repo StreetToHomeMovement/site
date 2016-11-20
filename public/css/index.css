@@ -87,7 +87,6 @@ header {
 #navigation-menu ul {
   list-style: none;
   position: absolute;
-  top: 12%;
 }
 
 #navigation-menu li {
@@ -107,6 +106,15 @@ header {
   border-top: 1px solid rgba(0, 0, 0, 0.0392157)
 }
 
+@media only screen and (max-width: 767px) {
+  #burger-icon {
+    top: -20px;
+    left: -20px;
+    width: 89px;
+    height: 89px;
+  }
+}
+
 #sidebar-logo:hover, #sidebar-label:hover, #burger-icon:hover {
   cursor: pointer;
 }
@@ -117,14 +125,6 @@ header {
 
 @media only screen and (max-width: 767px) {
   #content { margin-left: 0;}
-}
-
-@media only screen and (max-width: 767px) {
-  #burger-icon {
-    top: -20px;
-    left: -20px;
-    float: right;
-  }
 }
 
 .table-container {
