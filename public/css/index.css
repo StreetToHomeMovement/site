@@ -52,6 +52,7 @@ header {
 
 #sidebar-label {
   position: absolute;
+  display: block;
   width: 89px;
   right: 0;
   top: 89px;
@@ -60,15 +61,16 @@ header {
 
 #sidebar-label p {
   position: absolute;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: .8px;
+  margin: auto;
+  left: -166px;
+  width: 400px;
+  height: 0;
   transform: translateY(0) rotate(-90deg);
   text-transform: uppercase;
+  font-weight: 400;
   text-align: center;
-  height: 0;
-  width: 400px;
-  left: -166px;
+  font-size: 16px;
+  letter-spacing: .8px;
   top: 50%;
 }
 
@@ -369,10 +371,19 @@ input.user-form-input {
   margin-bottom: 22px;
 }
 
-button.form-submit {
-  width: 300px;
+.join {
   display: block;
   margin: 0 auto;
+  width: 300px;
+}
+
+.hug-right {
+  width: 150px;
+  margin-left: 150px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 9px;
+  margin-top: 20px;
 }
 
 div.after-form-container {
