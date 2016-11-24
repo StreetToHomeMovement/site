@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-  app.get('/login', function(req, res) {
+  app.get('/signin', function(req, res) {
     res.render('login.ejs')
   })
 

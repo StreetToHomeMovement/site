@@ -378,12 +378,13 @@ input.user-form-input {
 }
 
 .hug-right {
-  width: 150px;
-  margin-left: 150px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 9px;
-  margin-top: 20px;
+    font-size: 20px;
+    width: 135px;
+    margin-left: 165px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 9px;
+    margin-top: 20px;
 }
 
 div.after-form-container {
@@ -487,4 +488,9 @@ td, th {
 
 .right {
   float: right;
+}
+
+.btn-container-hug-right {
+  width: 300px;
+  margin: 0 auto;
 }
