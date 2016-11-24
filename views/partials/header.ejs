@@ -65,4 +65,11 @@
     }
     sidebarExpanded = (sidebarExpanded + 1)%2
   }
+
+  document.addEventListener("click", function(e) {
+      if (event.clientX > 300) {
+        sidebar.className = ""
+        navigationMenu.style.display = "none"
+      }
+  }, false)
 </script>
