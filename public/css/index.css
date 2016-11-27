@@ -192,12 +192,6 @@ header {
   width: 50%
 }
 
-
-
-
-
-
-
 .text {
   padding: 5%;
   background-color: rgb(255, 255, 255)
@@ -493,4 +487,26 @@ td, th {
 .btn-container-hug-right {
   width: 300px;
   margin: 0 auto;
+}
+
+h2.level {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 5px;
+}
+
+div.donor-container-left {
+  width: 45%;
+  float: left;
+  text-align: right;
+  padding: 10px;
+  font-size: 24px;
+}
+
+div.donor-container-right {
+  width: 45%;
+  float: right;
+  text-align: left;
+  padding: 10px;
+  font-size: 24px;
 }

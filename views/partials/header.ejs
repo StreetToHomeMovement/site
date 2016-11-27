@@ -66,8 +66,12 @@
     sidebarExpanded = (sidebarExpanded + 1)%2
   }
 
+  // Should programatically get the width from css and have that be in if conditional below
+  // #sidebar[class="expanded"] {
+  //   width: 320px;
+  // }
   document.addEventListener("click", function(e) {
-      if (event.clientX > 300) {
+      if (event.clientX > 320) {
         sidebar.className = ""
         navigationMenu.style.display = "none"
       }
