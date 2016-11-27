@@ -12,32 +12,50 @@
     </header>
 
     <div id="content">
+
+
+
+          <p>You are displayed as: </p>
+
+          <div class="input-group" style="width:300px;">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+          </div>
+
+
+
+
+
+
+
+
       <% for (var key in memberLevels) { %>
         <% if (memberLevels.hasOwnProperty(key)) { %>
 
-
           <div class="form-container">
-          <form class="donation-form">
-            <fieldset>
+            <form class="donation-form">
+              <fieldset>
 
-            <h2 class="level"><%= key %></h2>
-            <% if (memberLevels[key].length === 0) { %>
-              <div class="donor-container-left"><%= "-" %></div>
-              <div style="width:10%;height:47px;float:left;"></div>
-              <div class="donor-container-right"><%= "-" %></div>
-            <% } %>
+                <h2 class="level"><%= key %></h2>
+                <% if (memberLevels[key].length === 0) { %>
+                  <div class="donor-container-left"><%= "-" %></div>
+                  <div style="width:10%;height:47px;float:left;"></div>
+                  <div class="donor-container-right"><%= "-" %></div>
+                <% } %>
 
-            <% for (i = 0; i < Math.ceil(memberLevels[key].length/2)*2; i ++) { %>
-              <% if (i%2 === 0) { %>
-                <div class="donor-container-left"><%= memberLevels[key][i] %></div>
-                <div style="width:10%;height:47px;float:left;"></div>
-              <% } else { %>
-                <div class="donor-container-right"><%= memberLevels[key][i] || "-" %></div>
-              <% } %>
-            <% } %>
+                <% for (i = 0; i < Math.ceil(memberLevels[key].length/2)*2; i ++) { %>
+                  <% if (i%2 === 0) { %>
+                    <div class="donor-container-left"><%= memberLevels[key][i] %></div>
+                    <div style="width:10%;height:47px;float:left;"></div>
+                  <% } else { %>
+                    <div class="donor-container-right"><%= memberLevels[key][i] || "-" %></div>
+                  <% } %>
+                <% } %>
 
-          </fieldset>
-          </form>
+              </fieldset>
+            </form>
           </div>
 
 
