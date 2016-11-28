@@ -15,17 +15,20 @@ module.exports = function(app) {
           	'Quartz': [],
           	'Zircon': []
       }
-
+      var bookkeeping = []
+//res.render('members.ejs', {memberLevels: memberLevels})
     q = new Parse.Query('User')
     q.exists('totalDonations')
 
     q.find().then(function(users) {
       for (i = 0; i < users.length; i++) {
         var user = users[i]
+        bookkeeping.push(i)
+        console.log(users.length + ' ' + 'users.length' + ' ' + i)
         var memberLevel = calculateMemberLevel(user.get('totalDonations'))
-        memberLevels[memberLevel].push(user.get('donorname') || user.get('firstname'))
+        memberLevels[memberLevel].push(user.get('donorDisplayName') || user.get('firstname'))
 
-        if (i+1 === users.length) {
+        if (bookkeeping.length === users.length) {
           console.log(memberLevels)
           res.render('members.ejs', {memberLevels: memberLevels})
         }

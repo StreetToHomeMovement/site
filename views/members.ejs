@@ -14,27 +14,28 @@
     <div id="content">
 
 
+      <div class="after-form-container">
+        <p id="displayed-as" class="after-form">
+          <a id="forgotpwd" href="#" onclick="resetpwd()">Reset password</a>
+        </p>
+        <br>
+        <p class="after-form">
+          If you aren't comfortable with you display name you can <% include ./partials/changeDonorDisplayName %>
+        </p>
+      </div>
 
-          <p>You are displayed as: </p>
-
-          <div class="input-group" style="width:300px;">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
-            </span>
-          </div>
-
-
-
-
+      <script>
+        var element = document.getElementById('displayed-as')
+        var innerHTML = "You are currently displayed as: " + Parse.User.current().attributes.donorDisplayName || Parse.User.current().attributes.firstname
+        element.innerHTML = innerHTML
+      </script>
 
 
 
 
       <% for (var key in memberLevels) { %>
         <% if (memberLevels.hasOwnProperty(key)) { %>
-
-          <div class="form-container">
+          <div class="form-container" style="padding-bottom:0px;">
             <form class="donation-form">
               <fieldset>
 
@@ -56,6 +57,7 @@
 
               </fieldset>
             </form>
+            <img class="gem" src= <%= "/public/images/gems/" + key + ".png" %> >
           </div>
 
 

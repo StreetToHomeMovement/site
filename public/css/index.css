@@ -510,3 +510,7 @@ div.donor-container-right {
   padding: 10px;
   font-size: 24px;
 }
+
+img.gem {
+  margin: 0 calc(50% - 38px);
+}

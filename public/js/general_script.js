@@ -116,7 +116,8 @@ function setaccount() {
 	Parse.User.current().set("firstname",firstname)
 	Parse.User.current().set("lastname",lastname)
 	Parse.User.current().set("tempAccount",false)
-	Parse.User.current().set('tempPassword',null)
+	Parse.User.current().set("tempPassword",null)
+	Parse.User.current().set("donorDisplayName",firstname)
 
 	Parse.User.current().save().then( function success(obj) {
 			console.log('set account for user: ' + obj.id)
@@ -127,6 +128,24 @@ function setaccount() {
 		}
 	)
 }
+
+
+function changeDonorDisplayName(name) {
+	console.log("changing donorDisplayName")
+
+	Parse.User.current().set("donorDisplayName",name)
+
+	Parse.User.current().save().then( function success(obj) {
+			console.log('changed donorDisplayName for: ' + obj.id)
+
+			document.location.href = '/members'
+		}, function error(err) {
+			console.error(err)
+		}
+	)
+
+}
+
 
 function callDeleteAllPaymentMethods() {
 	Parse.Cloud.run("deleteAllPaymentMethods").then(function(resultMsg) {
