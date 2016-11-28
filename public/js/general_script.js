@@ -130,10 +130,11 @@ function setaccount() {
 }
 
 
-function changeDonorDisplayName(name) {
+function changeDonorDisplayName() {
+	var newName = document.getElementById('newName').value
 	console.log("changing donorDisplayName")
 
-	Parse.User.current().set("donorDisplayName",name)
+	Parse.User.current().set("donorDisplayName",newName)
 
 	Parse.User.current().save().then( function success(obj) {
 			console.log('changed donorDisplayName for: ' + obj.id)
