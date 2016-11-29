@@ -122,7 +122,7 @@ function setaccount() {
 	Parse.User.current().save().then( function success(obj) {
 			console.log('set account for user: ' + obj.id)
 
-			document.location.href = '/user'
+			document.location.href = '/donors'
 		}, function error(err) {
 			console.error(err)
 		}

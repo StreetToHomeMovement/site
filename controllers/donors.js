@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-  app.get('/members', function(req, res) {
+  app.get('/donors', function(req, res) {
 
     var memberLevels = {
             'Diamond': [],
@@ -30,7 +30,7 @@ module.exports = function(app) {
 
         if (bookkeeping.length === users.length) {
           console.log(memberLevels)
-          res.render('members.ejs', {memberLevels: memberLevels})
+          res.render('donors.ejs', {memberLevels: memberLevels})
         }
 
       }

@@ -498,7 +498,7 @@ h2.level {
 div.donor-container-left {
   width: 45%;
   float: left;
-  text-align: right;
+  text-align: center;
   padding: 10px;
   font-size: 24px;
 }
@@ -506,7 +506,7 @@ div.donor-container-left {
 div.donor-container-right {
   width: 45%;
   float: right;
-  text-align: left;
+  text-align: center;
   padding: 10px;
   font-size: 24px;
 }
