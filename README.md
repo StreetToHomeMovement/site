@@ -1,4 +1,4 @@
-##Setup and Readme
+##Setup
 
 Install latest version of [nodejs](https://nodejs.org) for your operating system
 
