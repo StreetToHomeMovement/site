@@ -514,3 +514,7 @@ div.donor-container-right {
 img.gem {
   margin: 0 calc(50% - 38px);
 }
+
+div#checkout {
+  height: 187;
+}
