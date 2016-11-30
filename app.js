@@ -17,13 +17,19 @@ var errorController = require('./controllers/error.js')
 // run cronjob
 require ('./cronjobs/reminderEmail.js')
 
-var api = new ParseServer({
-	databaseURI: 'mongodb://heroku_2261fmlk:ml55j85auqbbu67m0clur0toc5@ds153835.mlab.com:53835/heroku_2261fmlk',
-	cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-	serverURL: process.env.SERVER_URL || 'https://parse-server-codecraft-x-ample.herokuapp.com/parse',  // Don't forget to change to https if needed
 
-	appId: process.env.APP_ID || 'sukeiran44ka88aj',
-	masterKey: process.env.MASTER_KEY || '33jlas9893jkla', //Add your master key here. Keep it secret!
+var passwords = require('./passwords.json')
+console.log(passwords)
+
+app.set('APP_ID',passwords.parse_server.APP_ID)
+app.set('SERVER_URL',passwords.parse_server.SERVER_URL)
+
+var api = new ParseServer({
+	databaseURI: process.env.MONGODB_URI || passwords.parse_server.MONGODB_URI,
+	cloud: __dirname + '/cloud/main.js',
+	serverURL: process.env.SERVER_URL || passwords.parse_server.SERVER_URL,
+	appId: process.env.APP_ID || passwords.parse_server.APP_ID,
+	masterKey: process.env.MASTER_KEY || passwords.parse_server.MASTER_KEY, //Add your master key here. Keep it secret!
 
 	//**** Email Verification ****//
 	/* Enable email verification */
@@ -31,19 +37,18 @@ var api = new ParseServer({
 	/* The public URL of your app */
 	// This will appear in the link that is used to verify email addresses and reset passwords.
 	/* Set the mount path as it is in serverURL */
-	publicServerURL: process.env.SERVER_URL || 'https://parse-server-codecraft-x-ample.herokuapp.com/parse', // or 'http://localhost:3000/'
+	publicServerURL: process.env.SERVER_URL || passwords.parse_server.SERVER_URL, // or 'http://localhost:3000/'
 	/* This will appear in the subject and body of the emails that are sent */
 	appName: process.env.APP_NAME || "StreetToHomeMovement",
 
 	 emailAdapter: {
 	 	module: 'parse-server-simple-mailgun-adapter',
 	 	options: {
-	 		fromAddress: process.env.EMAIL_FROM || "no-reply@streetToHomeMovement.com",
-	 		domain: process.env.MAILGUN_DOMAIN || "appe8b1d4d285fe49edafea07f3c1477cb3.mailgun.org",
-			apiKey: process.env.MAILGUN_API_KEY  || "key-e0f292602a17f7ae7214409c83baba81"
+	 		fromAddress: process.env.EMAIL_FROM || passwords.mailgun.EMAIL_FROM,
+	 		domain: process.env.MAILGUN_DOMAIN || passwords.mailgun.MAILGUN_DOMAIN,
+			apiKey: process.env.MAILGUN_API_KEY  || passwords.mailgun.MAILGUN_API_KEY
 		}
 	},
-
 
 });
 

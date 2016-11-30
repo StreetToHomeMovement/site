@@ -30,7 +30,11 @@ module.exports = function(app) {
 
         if (bookkeeping.length === users.length) {
           console.log(memberLevels)
-          res.render('donors.ejs', {memberLevels: memberLevels})
+          res.render('donors.ejs', {
+            memberLevels: memberLevels,
+            APP_ID: app.get('APP_ID'),
+            SERVER_URL: app.get('SERVER_URL')
+          })
         }
 
       }

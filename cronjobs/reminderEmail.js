@@ -24,7 +24,7 @@ cron.schedule('00 30 11 * * 1-5', function(){ // - Runs every weekday (Monday th
           var Mailgun = require('mailgun').Mailgun;
 
           var mg = new Mailgun('key-e0f292602a17f7ae7214409c83baba81');
-          mg.sendText('support@StreetToHomeMovement.com', [`<${email}>`],
+          mg.sendText('support@StreetToHomeMovement.org', [`<${email}>`],
             'Finish making your account',
             'Click the following link to finish your account: ' + link,
             'noreply@example.com', {},

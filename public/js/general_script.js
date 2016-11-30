@@ -1,11 +1,3 @@
-Parse.initialize("sukeiran44ka88aj")
-if (window.location.href.indexOf('localhost:3000') != -1) {
-	Parse.serverURL = 'http://localhost:3000/parse'
-} else {
-	Parse.serverURL = 'https://parse-server-codecraft-x-ample.herokuapp.com/parse'
-}
-console.log('Parse.serverURL: ' + Parse.serverURL)
-
 function login() {
 	console.log("Login called");
 
@@ -139,7 +131,7 @@ function changeDonorDisplayName() {
 	Parse.User.current().save().then( function success(obj) {
 			console.log('changed donorDisplayName for: ' + obj.id)
 
-			document.location.href = '/members'
+			document.location.href = '/donors'
 		}, function error(err) {
 			console.error(err)
 		}

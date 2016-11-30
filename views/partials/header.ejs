@@ -1,4 +1,17 @@
-<!-- views/partials/header.ejs -->
+<!-- initialize client side parse server -->
+
+<script>
+  Parse.initialize('<%= APP_ID %>')
+  if (window.location.href.indexOf('localhost:3000') != -1) {
+    Parse.serverURL = 'http://localhost:3000/parse'
+  } else {
+    Parse.serverURL = '<%= SERVER_URL %>'
+  }
+  console.log('Parse.serverURL: ' + Parse.serverURL)
+</script>
+
+
+<!-- sidebar -->
 
 <div id="sidebar" class="normal-collapsed">
   <a href="/"><div id="sidebar-logo"></div><a/>
