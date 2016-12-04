@@ -45,8 +45,8 @@ var api = new ParseServer({
 var cloud = process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js'
 
 // Serve the Parse API on the /parse URL prefix
-var mountPath = process.env.PARSE_MOUNT || '/parse';
-console.log(mountPath)
+var mountPath = 'https://street2hometest.herokuapp.com/parse';
+console.log('mountPath: ' + mountPath)
 app.use(mountPath, api);
 
 // use ejs view engine
