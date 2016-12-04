@@ -4,16 +4,6 @@ var app = express()
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 
-var indexController = require('./controllers/index.js')
-var loginController = require('./controllers/login.js')
-var donationAmountController = require('./controllers/donationAmount.js')
-var paymentMethodController = require('./controllers/paymentMethod.js')
-var setaccountController = require('./controllers/setaccount.js')
-var newsController = require('./controllers/news.js')
-var donorsController = require('./controllers/donors.js')
-var webhooksController = require('./controllers/webhooks.js')
-var errorController = require('./controllers/error.js')
-
 // run cronjob
 require ('./cronjobs/reminderEmail.js')
 
@@ -21,8 +11,8 @@ require ('./cronjobs/reminderEmail.js')
 var passwords = require('./passwords.json')
 console.log(passwords)
 
-app.set('APP_ID',passwords.parse_server.APP_ID)
-app.set('SERVER_URL',passwords.parse_server.SERVER_URL)
+app.set('APP_ID',process.env.APP_ID || passwords.parse_server.APP_ID)
+app.set('SERVER_URL',process.env.SERVER_URL || passwords.parse_server.SERVER_URL)
 
 var api = new ParseServer({
 	databaseURI: process.env.MONGODB_URI || passwords.parse_server.MONGODB_URI,
@@ -67,6 +57,16 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/public', express.static(__dirname + '/public'));
 
 // set controllers (routes)
+var indexController = require('./controllers/index.js')
+var loginController = require('./controllers/login.js')
+var donationAmountController = require('./controllers/donationAmount.js')
+var paymentMethodController = require('./controllers/paymentMethod.js')
+var setaccountController = require('./controllers/setaccount.js')
+var newsController = require('./controllers/news.js')
+var donorsController = require('./controllers/donors.js')
+var webhooksController = require('./controllers/webhooks.js')
+var errorController = require('./controllers/error.js')
+
 indexController(app)
 loginController(app)
 donationAmountController(app)
