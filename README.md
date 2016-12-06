@@ -8,8 +8,6 @@ You will have to make your own account tied to your bank account. Just [go here]
 
 Once you create the account I will walk you through how to create the subscription plans and webhooks (the webhooks update our MongoDB when subscriptions are charged). 
 
-After creating the account, add the required passwords from this Braintree account to passwords.json in our codebase.
-
 Here are links to the guide and API (make sure NODE.JS is selected for our server side language and javascript/v2 for client side): 
 * https://developers.braintreepayments.com/guides/overview
 * https://developers.braintreepayments.com/reference/overview
