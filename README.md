@@ -20,7 +20,7 @@ You should make your own account. I have no advice on what account level you nee
 
 1. Go to heroku.com, make an account, and then make a new app.
 
-2. Under Deploy, follow the instructions under "install the Heroku CLI" and "Existing Git Repository". Ignore the next two subsections ("Create a new Git repository" and "Deploy your application"). These steps allow you to push/deploy our GitHub directory to Heroku using Heroku's command line interface. 
+2. Under Deploy, follow the instructions under "install the Heroku CLI" and "Existing Git Repository". These steps allow you to push/deploy our GitHub directory to Heroku using Heroku's command line interface. Ignore the subsections "Create a new Git repository" and "Deploy your application". 
 
 3. Under Resources, go to add ons and:
   1. add *mLab MongoDB* (get the Sandbox - Free version since I don't see us needing anything higher).
