@@ -48,7 +48,7 @@
           </div>
         </section>
         <section id="join">
-          <form style="padding-bottom:30px;">
+          <form id="joinForm" style="padding-bottom:30px;">
             <h3 class="user-form-header" style="margin-bottom:0;">Join our revolution</h3><br>
             <div class="form-group">
               <input id="email" name="email" type="email" class="form-control user-form-input" placeholder="Email" required/>
@@ -56,8 +56,14 @@
             <div class="form-group">
               <input id="zip" class="form-control user-form-input" name="zip" pattern="[0-9]*" type="text" placeholder="Zip" required/>
             </div>
-            <button type="button" class="btn btn-primary form-submit join" onclick="makeTempAccount()">Join</button>
+            <input type="submit" class="btn btn-primary form-submit join" value="Join">
           </form>
+          <script>
+            document.getElementById("joinForm").addEventListener("submit", function(event){
+                event.preventDefault()
+                makeTempAccount()
+            })
+          </script>
         </section>
       </div>
     </div>

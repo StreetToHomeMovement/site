@@ -1,8 +1,11 @@
-function braintreeSetup(returningUser, amount, subscription) {
+function braintreeSetup(amount, subscription) {
   Parse.Cloud.run("braintreeClientToken").then(function(clientToken) {
     braintree.setup(clientToken, 'dropin', {
         container: 'checkout',
         onPaymentMethodReceived: function(result) {
+
+          var returningUser = Parse.User.current() != null
+
           if (returningUser) {
             var func1 = "createSubscription"
             var func2 = "makeDonation"
@@ -25,13 +28,13 @@ function braintreeSetup(returningUser, amount, subscription) {
               if (existingSubscriptionId) {
                 Parse.Cloud.run('cancelExistingSubscription', {subscriptionId: existingSubscriptionId}).then(function(result) {
                   console.log(result)
-                  window.location.href = '/user'
+                  window.location.href = '/donors'
                 })
               } else {
                 if (returningUser != true) {
                   window.location.href = '/setaccount'
                 } else {
-                  window.location.href = '/user'
+                  window.location.href = '/donors'
                 }
               }
             })
@@ -46,7 +49,7 @@ function braintreeSetup(returningUser, amount, subscription) {
               if (returningUser != true) {
                 window.location.href = '/setaccount'
               } else {
-                window.location.href = '/user'
+                window.location.href = '/donors'
               }
             })
 

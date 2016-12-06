@@ -7,9 +7,7 @@ var cookieParser = require('cookie-parser')
 // run cronjob
 require ('./cronjobs/reminderEmail.js')
 
-
 var passwords = require('./passwords.json')
-console.log(passwords)
 
 app.set('APP_ID',process.env.APP_ID || passwords.parse_server.APP_ID)
 app.set('SERVER_URL',process.env.SERVER_URL || passwords.parse_server.SERVER_URL)
@@ -46,7 +44,7 @@ var cloud = process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js'
 
 // Serve the Parse API on the /parse URL prefix
 var mountPath = process.env.PARSE_MOUNT || '/parse';
-console.log(mountPath);
+console.log('mountPath: ' + mountPath)
 app.use(mountPath, api);
 
 // use ejs view engine

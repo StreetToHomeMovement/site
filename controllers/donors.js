@@ -24,12 +24,10 @@ module.exports = function(app) {
       for (i = 0; i < users.length; i++) {
         var user = users[i]
         bookkeeping.push(i)
-        console.log(users.length + ' ' + 'users.length' + ' ' + i)
         var memberLevel = calculateMemberLevel(user.get('totalDonations'))
         memberLevels[memberLevel].push(user.get('donorDisplayName') || user.get('firstname'))
 
         if (bookkeeping.length === users.length) {
-          console.log(memberLevels)
           res.render('donors.ejs', {
             memberLevels: memberLevels,
             APP_ID: app.get('APP_ID'),

@@ -40,16 +40,6 @@ function logout() {
 	)
 }
 
-function userPageOrLogin() {
-  // see if sessionToken is valid
-  Parse.User.become(Parse.User.current().getSessionToken()).then(function success() {
-    window.location.href = '/user'
-  }, function error() {
-    alert('Please login')
-    window.location.href = '/login'
-  })
-}
-
 function resetpwd() {
 	console.log("resetpwd called");
 
@@ -121,7 +111,6 @@ function setaccount() {
 	)
 }
 
-
 function changeDonorDisplayName() {
 	var newName = document.getElementById('newName').value
 	console.log("changing donorDisplayName")
@@ -138,7 +127,6 @@ function changeDonorDisplayName() {
 	)
 
 }
-
 
 function callDeleteAllPaymentMethods() {
 	Parse.Cloud.run("deleteAllPaymentMethods").then(function(resultMsg) {

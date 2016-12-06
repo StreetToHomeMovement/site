@@ -13,15 +13,13 @@
       <% include ./partials/header %>
     </header>
 
-    <section id="outreach" class="container">
-        <div class="form-container">
-          <h3 class="user-form-header">Make donation and join our fight!</h3><br>
-            <form id="donation-form" action="/setaccount" method="post">
-              <div id="checkout"></div>
-              <button class="btn btn-primary form-submit hug-right" type="submit">Submit</button>
-            </form>
-        </div>
-    </section>
+    <div class="form-container">
+      <h3 class="user-form-header">Payment Information</h3><br>
+      <form id="donation-form" action="/setaccount" method="post">
+        <div id="checkout"></div>
+        <button class="btn btn-primary form-submit hug-right" type="submit">Submit</button>
+      </form>
+    </div>
 
     <div class="after-form-container">
       <p class="after-form">
@@ -36,7 +34,7 @@
     </div>
 
     <script>
-      braintreeSetup(false, <%= amount %>, <%= subscription %>)
+      braintreeSetup(<%= amount %>, <%= subscription %>)
     </script>
 
   </body>
