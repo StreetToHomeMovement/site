@@ -31,9 +31,9 @@ You should make your own account. I have no advice on what account level you nee
   2. *SERVER_URL* - set this to the parse mount path: "http://www.streettohomemovement.org/parse" (search for "// Serve the Parse API on the /parse URL prefix" in our codebase to see where this is set)
   3. *MASTER_KEY* - set this to whatever you want but make sure it is secure, hidden from the public, and hard to guess. This key allows you to override all ACL's in our database and let's you read/write on any database object. 
   4. *EMAIL_FROM* - I would recommend setting this to: "no-reply@streettohomemovement.org". This is the email address Mailgun will use as the send address when our users get password reset emails, or reminder emails to finish seting their accounts.
-  5. *btMerchantId* - This is the Braintree merchantId (need to make a Braintree account) 
-  6. *btPublicKey* - This is the Braintree publicKey (need to make a Braintree account)
-  7. *btPrivateKey* - This is the Braintree privateKey (need to make a Braintree account)
+  5. *btMerchantId* - This is the Braintree merchantId.
+  6. *btPublicKey* - This is the Braintree publicKey.
+  7. *btPrivateKey* - This is the Braintree privateKey.
   
 6. cd locally to the website directory and enter the command ```$ git push heroku master``` into the terminal. This pushes/deploys your local code to Heroku. Heroku is smart and will detect our site is a NodeJS app. Heroku will use our "package.json" file as a starting point - Heroku will automatically install all of the dependencies listed, run the command(s) needed to start the app, etc.
 
