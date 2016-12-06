@@ -2,6 +2,18 @@
 
 Keith, our website is a **NodeJS** app that uses **expressJS** as a router, **mLab MongoDB** (as a Heroku add on) as a database, and **Parse Server** (open source “Parse”) as an “api” to our MongoDB database. Parse Server is nice because it does most of the work for us when it comes to managing users, sessions, password resets, and other typical tasks. Also, we are using **Mailgun** (as a Heroku add on) to automatically send emails to our users, **Braintree** to process donations, and **GhostPro** for blogging (news articles). We will be using **Heroku** as a host, however, we can switch to any hosting platform you want but it may complicate integration with some of the add ons.
 
+##BRAINTREE (payments)
+
+You will have to make your own account tied to your bank account. Just [go here](https://www.braintreepayments.com/) and click on "Sign up" and follow instructions. We should be able to get discounted rates since we are a non-profit. 
+
+Once you create the account I will walk you through how to create the subscription plans and webhooks (the webhooks update our MongoDB when subscriptions are charged). 
+
+After creating the account, add the required passwords from this Braintree account to passwords.json in our codebase.
+
+Here are links to the guide and API (make sure NODE.JS is selected for our server side language and javascript/v2 for client side): 
+* https://developers.braintreepayments.com/guides/overview
+* https://developers.braintreepayments.com/reference/overview
+
 ##HEROKU (host)
 
 Heroku seems like the most convenient hosting platform. It allows seamless integration with add-ons such as mailgun.
@@ -21,6 +33,9 @@ You should make your own account. I have no advice on what account level you nee
   2. *SERVER_URL* - set this to the parse mount path: "http://www.streettohomemovement.org/parse" (search for "// Serve the Parse API on the /parse URL prefix" in our codebase to see where this is set)
   3. *MASTER_KEY* - set this to whatever you want but make sure it is secure, hidden from the public, and hard to guess. This key allows you to override all ACL's in our database and let's you read/write on any database object. 
   4. *EMAIL_FROM* - I would recommend setting this to: "no-reply@streettohomemovement.org". This is the email address Mailgun will use as the send address when our users get password reset emails, or reminder emails to finish seting their accounts.
+  5. *btMerchantId* - This is the Braintree merchantId (need to make a Braintree account) 
+  6. *btPublicKey* - This is the Braintree publicKey (need to make a Braintree account)
+  7. *btPrivateKey* - This is the Braintree privateKey (need to make a Braintree account)
   
 6. cd locally to the website directory and enter the command ```$ git push heroku master``` into the terminal. This pushes/deploys your local code to Heroku. Heroku is smart and will detect our site is a NodeJS app. Heroku will use our "package.json" file as a starting point - Heroku will automatically install all of the dependencies listed, run the command(s) needed to start the app, etc.
 
@@ -42,18 +57,6 @@ Parse Server has a dashboard that you can use to get a good sense of what's in o
 Here are some additional reference links:
 * http://parseplatform.github.io/docs/js/guide/
 * https://parseplatform.github.io/Parse-SDK-JS/api/
-
-##BRAINTREE (payments)
-
-You will have to make your own account tied to your bank account. Just [go here](https://www.braintreepayments.com/) and click on "Sign up" and follow instructions. We should be able to get discounted rates since we are a non-profit. 
-
-Once you create the account I will walk you through how to create the subscription plans and webhooks (the webhooks update our MongoDB when subscriptions are charged). 
-
-After creating the account, add the required passwords from this Braintree account to passwords.json in our codebase.
-
-Here are links to the guide and API (make sure NODE.JS is selected for our server side language and javascript/v2 for client side): 
-* https://developers.braintreepayments.com/guides/overview
-* https://developers.braintreepayments.com/reference/overview
 
 ##Ghost (blogging/news)
 
