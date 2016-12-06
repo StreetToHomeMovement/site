@@ -16,30 +16,30 @@ module.exports = function(app) {
           	'Zircon': []
       }
       var bookkeeping = []
-//res.render('members.ejs', {memberLevels: memberLevels})
-    q = new Parse.Query('User')
-    q.exists('totalDonations')
+      //res.render('members.ejs', {memberLevels: memberLevels})
+      q = new Parse.Query('User')
+      q.exists('totalDonations')
 
-    q.find().then(function(users) {
-      for (i = 0; i < users.length; i++) {
-        var user = users[i]
-        bookkeeping.push(i)
-        var memberLevel = calculateMemberLevel(user.get('totalDonations'))
-        memberLevels[memberLevel].push(user.get('donorDisplayName') || user.get('firstname'))
+      q.find().then(function(users) {
+        for (i = 0; i < users.length; i++) {
+          var user = users[i]
+          bookkeeping.push(i)
+          var memberLevel = calculateMemberLevel(user.get('totalDonations'))
+          memberLevels[memberLevel].push(user.get('donorDisplayName') || user.get('firstname'))
 
-        if (bookkeeping.length === users.length) {
-          res.render('donors.ejs', {
-            memberLevels: memberLevels,
-            APP_ID: app.get('APP_ID'),
-            SERVER_URL: app.get('SERVER_URL')
-          })
+          if (bookkeeping.length === users.length) {
+            res.render('donors.ejs', {
+              memberLevels: memberLevels,
+              APP_ID: app.get('APP_ID'),
+              SERVER_URL: app.get('SERVER_URL')
+            })
+          }
         }
+      })
 
-      }
     })
+  }
 
-  })
-}
 
 function calculateMemberLevel(totalDonations) {
   var d = totalDonations
@@ -69,16 +69,3 @@ function calculateMemberLevel(totalDonations) {
   }
 
 }
-
-// var memberLevels = require('../test_data/memberLevels.js')
-//
-// module.exports = function(app) {
-//
-//   app.get('/members', function(req, res) {
-//     console.log(memberLevels)
-//     console.log(memberLevels.length)
-//     console.log()
-//     res.render('members.ejs', {memberLevels: memberLevels})
-//   })
-//
-// }
