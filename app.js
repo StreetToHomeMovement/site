@@ -9,8 +9,13 @@ var cookieParser = require('cookie-parser')
 // run cronjob
 require ('./cronjobs/reminderEmail.js')
 
-var passwords = require('./passwords.json')
-console.log('READ IN PASSWORDS')
+if (process.env.APP_ID) {
+	console.log("running on hosted platform")
+} else {
+	console.log("running locally")
+	var passwords = require('./passwords.json')
+	console.log('READ IN PASSWORDS')
+}
 
 
 app.set('APP_ID',process.env.APP_ID || passwords.parse_server.APP_ID)
