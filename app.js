@@ -1,3 +1,5 @@
+console.log('RUNNING')
+
 var ParseServer = require('parse-server').ParseServer
 var express = require('express')
 var app = express()
@@ -8,6 +10,8 @@ var cookieParser = require('cookie-parser')
 require ('./cronjobs/reminderEmail.js')
 
 var passwords = require('./passwords.json')
+console.log('READ IN PASSWORDS')
+
 
 app.set('APP_ID',process.env.APP_ID || passwords.parse_server.APP_ID)
 app.set('SERVER_URL',process.env.SERVER_URL || passwords.parse_server.SERVER_URL)
