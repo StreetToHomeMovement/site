@@ -1,4 +1,11 @@
-var passwords = require('../passwords.json')
+if (process.env.APP_ID) {
+	console.log("using environmental vars for braintree")
+} else {
+	console.log("running locally")
+	var passwords = require('../passwords.json')
+	console.log('READ IN PASSWORDS FOR BRAINTREE')
+}
+
 var braintree = require('braintree');
 
 module.exports.gateway = braintree.connect({
