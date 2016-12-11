@@ -5,6 +5,12 @@ function braintreeSetup(amount, subscription) {
         onPaymentMethodReceived: function(result) {
 
           var returningUser = Parse.User.current() != null
+          if (returningUser) {
+            if (Parse.User.current().attributes.tempAccount == true) {
+              returningUser = false
+            }
+          }
+          console.log("returningUser " + returningUser)
 
           if (returningUser) {
             var func1 = "createSubscription"

@@ -19,6 +19,7 @@ if (process.env.APP_ID) {
 
 app.set('APP_ID',process.env.APP_ID || passwords.parse_server.APP_ID)
 app.set('SERVER_URL',process.env.SERVER_URL || passwords.parse_server.SERVER_URL)
+app.set('MASTER_KEY',process.env.MASTER_KEY || passwords.parse_server.MASTER_KEY)
 
 var api = new ParseServer({
 	databaseURI: process.env.MONGODB_URI || passwords.parse_server.MONGODB_URI,

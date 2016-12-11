@@ -8,7 +8,7 @@ function login() {
 	Parse.User.logIn(email, password).then(
 		function success(user) {
 			console.log("Logged in ", Parse.User.current())
-			window.location.href = '/user'
+			window.location.href = '/news'
 		},
 		function error(err) {
 			alert("Error: " + err.code + " " + err.message)
