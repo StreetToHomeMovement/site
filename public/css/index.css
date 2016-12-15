@@ -415,16 +415,16 @@ form#donation-form {
   margin-bottom: 20px;
   width: 45%;
   cursor:pointer;
-  -webkit-appearance: button;
+  /*-webkit-appearance: button;*/
   /* WebKit */
-  -moz-appearance: button;
+  /*-moz-appearance: button;*/
   /* Mozilla */
-  -o-appearance: button;
+  /*-o-appearance: button;*/
   /* Opera */
-  -ms-appearance: button;
+  /*-ms-appearance: button;*/
   /* Internet Explorer */
-  appearance: button;
-/* CSS3 */
+  /*appearance: button;*/
+  /* CSS3 */
 }
 
 #donation-form label#amount_x_label {
