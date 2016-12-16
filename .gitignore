@@ -1,4 +1,4 @@
 /node_modules
 /logs
 *passwords.json
-
+*DS_Store

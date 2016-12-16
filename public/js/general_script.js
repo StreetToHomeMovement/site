@@ -8,6 +8,8 @@ function login() {
 	Parse.User.logIn(email, password).then(
 		function success(user) {
 			console.log("Logged in ", Parse.User.current())
+			document.cookie = "email="+Parse.User.current().attributes.email+";"
+			document.cookie = "sessionToken="+Parse.User.current().getSessionToken()+";"
 			window.location.href = '/news'
 		},
 		function error(err) {
@@ -32,7 +34,10 @@ function logout() {
 
 	Parse.User.logOut().then(
 		function success(user) {
+			document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+			document.cookie = "sessionToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 			console.log("Logged Out ", Parse.User.current())
+			window.location.href = "/"
 		},
 		function error(err) {
 			alert("Error: " + err.code + " " + err.message)
@@ -75,6 +80,8 @@ function makeTempAccount() {
   user.signUp().then(
 		function success(tempUser) {
       console.log("temp account made with id " + tempUser.id)
+			document.cookie = "email="+Parse.User.current().attributes.email+";"
+			document.cookie = "sessionToken="+Parse.User.current().getSessionToken()+";"
 			window.location.href = '/donationAmount'
     },
 		function error(err) {
