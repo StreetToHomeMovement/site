@@ -8,9 +8,7 @@ module.exports = function(app) {
     query.equalTo('email', req.cookies.email)
     query.find({ sessionToken: req.cookies.sessionToken || "-1" }) // pass the session token to find()
       .then(function(r) {
-        console.log("workedHO")
-
-
+        console.log('in query')
         ///////////////////////////////////////////////////////////////////////
 
 
@@ -25,9 +23,10 @@ module.exports = function(app) {
             var user = users[i]
             bookkeeping.push(i)
             var memberLevel = calculateMemberLevel(user.get('totalDonations'))
-            memberLevels[memberLevel].push(user.get('donorDisplayName') || user.get('firstname'))
+            memberLevels[memberLevel].push(user.get('donorDisplayName') || user.get('firstname') || 'anonymous')
 
             if (bookkeeping.length === users.length) {
+              console.log(memberLevels)
               res.render('donors.ejs', {
                 memberLevels: memberLevels,
                 APP_ID: app.get('APP_ID'),
