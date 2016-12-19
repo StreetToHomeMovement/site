@@ -6,11 +6,13 @@ module.exports = function(app) {
 
     var query = new Parse.Query('User')
     query.equalTo('email', req.cookies.email)
-    query.find({ sessionToken: req.cookies.sessionToken || "-1" }) // pass the session token to find()
-      .then(function(r) {
-        console.log('in query')
-        ///////////////////////////////////////////////////////////////////////
+    query.first({ sessionToken: req.cookies.sessionToken || "-1" }) // pass the session token to find()
+      .then(function(user) {
 
+        if (user.get('tempAccount')) {
+          res.redirect('/donationAmount')
+        }
+        ///////////////////////////////////////////////////////////////////////
 
         var memberLevels = blankMemberLevels()
         var bookkeeping = []
@@ -26,7 +28,6 @@ module.exports = function(app) {
             memberLevels[memberLevel].push(user.get('donorDisplayName') || user.get('firstname') || 'anonymous')
 
             if (bookkeeping.length === users.length) {
-              console.log(memberLevels)
               res.render('donors.ejs', {
                 memberLevels: memberLevels,
                 APP_ID: app.get('APP_ID'),
