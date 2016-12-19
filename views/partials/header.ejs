@@ -37,7 +37,12 @@
 </div>
 
 <script>
-  var loggedIn = Parse.User.current() != null
+  loggedIn = false
+  if (Parse.User.current()) {
+    if (Parse.User.current().attributes.tempAccount === false) {
+        loggedIn = true
+    }
+  }
   if (loggedIn) {
     console.log('logged in')
     var s = '<ul>'

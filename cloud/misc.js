@@ -8,3 +8,7 @@ Parse.Cloud.define('makeTemporaryPassword', function(req, res) {
   })
   res.success(password)
 })
+
+Parse.Cloud.define('test', function(req, res) {
+  res.success(req.user)
+})
