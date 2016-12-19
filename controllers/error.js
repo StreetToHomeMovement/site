@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-  app.get('*', function(req, res, next) {
+  app.get('/wang', function(req, res, next) {
     var err = new Error()
     err.status = 404
     next(err)
@@ -12,7 +12,7 @@ module.exports = function(app) {
       return next()
     }
 
-    res.send(err.message || '** not a valid route **')
+    res.send(err.message || '** invalid route **')
   })
 
 }
