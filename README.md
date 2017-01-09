@@ -8,8 +8,6 @@ Before we continue you need to make the following accounts:
  - [mLab (mongoDB)](https://mlab.com/)
  - [MailGun](https://www.mailgun.com/)
  
-See below for more info...
-
 ##OVERVIEW
 
 Keith, our website is a **NodeJS** app that uses **expressJS** as a router, **mLab MongoDB** as a database, and **Parse Server** (open source “Parse”) as an “api” to our MongoDB database. Parse Server is nice because it does most of the work for us when it comes to managing users, sessions, password resets, and other typical tasks. Also, we are using **Mailgun** to automatically send emails to our users, **Braintree** to process donations, and **GhostPro** for blogging (news articles). We will be using **Digital Ocean** as a host.
