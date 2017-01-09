@@ -66,6 +66,7 @@ app.use('/public', express.static(__dirname + '/public'));
 
 // set controllers (routes)
 var indexController = require('./controllers/index.js')
+var joinController = require('./controllers/join.js')
 var loginController = require('./controllers/login.js')
 var donationAmountController = require('./controllers/donationAmount.js')
 var paymentMethodController = require('./controllers/paymentMethod.js')
@@ -75,6 +76,7 @@ var webhooksController = require('./controllers/webhooks.js')
 var errorController = require('./controllers/error.js')
 
 indexController(app)
+joinController(app)
 loginController(app)
 donationAmountController(app)
 paymentMethodController(app)

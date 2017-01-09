@@ -1,0 +1,50 @@
+<html>
+
+  <head>
+    <title>Street to Home Movement -  Join</title>
+    <% include ./partials/head %>
+  </head>
+  <body>
+
+    <header id="header">
+      <% include ./partials/header %>
+    </header>
+
+    <div class="sidebar-complement">
+
+      <form id="joinForm" class="form-container">
+        <h3 class="user-form-header">Join Our Revolution</h3><br>
+        <div class="form-group">
+          <input name="email" type="email" class="form-control user-form-input" id="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <input name="zip" pattern="[0-9]*" type="text" class="form-control user-form-input" id="zip" placeholder="Zip Code">
+        </div>
+        <div class="btn-container-hug-right">
+          <input type="submit" class="btn btn-primary form-submit hug-right" style="margin-top:0" value="Join">
+        </div>
+      </form>
+      <script>
+        document.getElementById("joinForm").addEventListener("submit", function(event){
+            event.preventDefault()
+            makeTempAccount()
+        })
+      </script>
+
+      <div class="after-form-container">
+        <p class="after-form">
+          Already Have an Account?
+          <a id="forgotpwd" href="/signin">Sign in</a>
+        </p>
+        <br>
+        <p class="after-form">
+          Can't remember which email account you used?
+          <a href="#">Email support</a>
+        </p>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
