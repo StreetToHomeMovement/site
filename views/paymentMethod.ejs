@@ -17,9 +17,14 @@
       <h3 class="user-form-header">Payment Information</h3><br>
       <form id="donation-form" action="/setaccount" method="post">
         <div id="checkout"></div>
-        <button class="btn btn-primary form-submit hug-right" type="submit">Submit</button>
+        <input class="btn btn-primary form-submit hug-right" type="submit" label="Submit">
       </form>
     </div>
+    <script>
+      document.getElementById("donation-form").addEventListener("submit", function(event){
+          document.getElementById("spinner").style.visibility = "visible"
+      })
+    </script>
 
     <div class="after-form-container">
       <p class="after-form">
@@ -36,6 +41,8 @@
     <script>
       braintreeSetup(<%= amount %>, <%= subscription %>)
     </script>
+
+    <div id="spinner" class="loading">Loading&#8230;</div>
 
   </body>
 

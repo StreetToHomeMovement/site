@@ -61,11 +61,13 @@
           <script>
             document.getElementById("joinForm").addEventListener("submit", function(event){
                 event.preventDefault()
+                document.getElementById("spinner").style.visibility = "visible"
                 makeTempAccount()
             })
           </script>
         </section>
       </div>
     </div>
+    <div id="spinner" class="loading">Loading&#8230;</div>
   </body>
 </html>

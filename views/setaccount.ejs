@@ -11,7 +11,7 @@
 
     <div class="sidebar-complement">
 
-      <form class="form-container">
+      <form id="setAccountForm" class="form-container">
         <h3 class="user-form-header">Set Your Account</h3><br>
         <div class="form-group">
           <input name="firstname" type="text" class="form-control user-form-input" id="firstname" placeholder="First Name" require>
@@ -23,9 +23,18 @@
           <input name="password" type="password" class="form-control user-form-input" id="password" placeholder="Password">
         </div>
         <div class="btn-container-hug-right">
-          <button type="button" class="btn btn-primary form-submit hug-right" onclick="setaccount()" required title="5 characters minimum">Set</button>
+          <input type="submit" class="btn btn-primary form-submit hug-right" required title="5 characters minimum" label="Set">
         </div>
       </form>
+      <script>
+        document.getElementById("setAccountForm").addEventListener("submit", function(event){
+            event.preventDefault()
+            document.getElementById("spinner").style.visibility = "visible"
+            setAccount()
+        })
+      </script>
+
+
       <div class="after-form-container">
         <p class="after-form">
           Make an account to view <a href="#">premium</a> news articles, campaign updates.
@@ -37,6 +46,8 @@
       </div>
 
     </div>
+
+    <div id="spinner" class="loading">Loading&#8230;</div>
 
   </body>
 </html>

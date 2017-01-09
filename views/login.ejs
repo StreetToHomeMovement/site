@@ -12,7 +12,7 @@
 
     <div class="sidebar-complement">
 
-      <form class="form-container">
+      <form id="loginForm" class="form-container">
         <h3 class="user-form-header">Sign in to view premium content</h3><br>
         <div class="form-group">
           <input name="email" type="email" class="form-control user-form-input" id="email" placeholder="Email">
@@ -21,9 +21,16 @@
           <input name="password" type="password" class="form-control user-form-input" id="password" placeholder="Password">
         </div>
         <div class="btn-container-hug-right">
-          <button class="btn btn-primary form-submit hug-right" type="button" onclick="login()">Sign in</button>
+          <input type="submit" class="btn btn-primary form-submit hug-right" value="Sign in">
         </div>
       </form>
+      <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event){
+            event.preventDefault()
+            document.getElementById("spinner").style.visibility = "visible"
+            login()
+        })
+      </script>
 
       <div class="after-form-container">
         <p class="after-form">
@@ -40,5 +47,7 @@
     </div>
 
   </body>
+
+  <div id="spinner" class="loading">Loading&#8230;</div>
 
 </html>

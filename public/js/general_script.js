@@ -13,6 +13,7 @@ function login() {
 			window.location.href = '/news'
 		},
 		function error(err) {
+			document.getElementById("spinner").style.visibility = "hidden"
 			alert("Error: " + err.code + " " + err.message)
 		}
 	)
@@ -24,6 +25,7 @@ function tempLogin(email,password) {
 			console.log("Logged in ", Parse.User.current())
 		},
 		function error(err) {
+			document.getElementById("spinner").style.visibility = "hidden"
 			alert("Error: " + err.code + " " + err.message)
 		}
 	)
@@ -56,6 +58,7 @@ function resetpwd() {
 			alert("reset password email sent")
 		},
 		function error(err) {
+			document.getElementById("spinner").style.visibility = "hidden"
 			alert("Error: " + err.code + " " + err.message)
 		}
 	)
@@ -85,7 +88,8 @@ function makeTempAccount() {
 			window.location.href = '/donationAmount'
     },
 		function error(err) {
-      console.error(err)
+			document.getElementById("spinner").style.visibility = "hidden"
+      console.log(err)
 			// write code here that handles what happens if their is already a User
 			// with this email address? what if they want to donate again without
 			// making an account?
@@ -113,7 +117,8 @@ function setaccount() {
 
 			document.location.href = '/donors'
 		}, function error(err) {
-			console.error(err)
+			document.getElementById("spinner").style.visibility = "hidden"
+			consoe.log(err)
 		}
 	)
 }
