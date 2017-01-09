@@ -1,8 +1,18 @@
-Check out http://104.131.79.42 for working example
+See http://104.131.79.42 for working example (my Braintree Sandbox can be finicky)
+
+##TODO
+Before we continue you need to make the following accounts:
+
+ - DigitalOcean (See below for more details)
+ - Braintree (See below)
+ - [mLab (mongoDB)](https://mlab.com/)
+ - [MailGun](https://www.mailgun.com/)
+ 
+See below for more info...
 
 ##OVERVIEW
 
-Keith, our website is a **NodeJS** app that uses **expressJS** as a router, **mLab MongoDB** (as a Heroku add on) as a database, and **Parse Server** (open source “Parse”) as an “api” to our MongoDB database. Parse Server is nice because it does most of the work for us when it comes to managing users, sessions, password resets, and other typical tasks. Also, we are using **Mailgun** (as a Heroku add on) to automatically send emails to our users, **Braintree** to process donations, and **GhostPro** for blogging (news articles). We will be using **Heroku** as a host, however, we can switch to any hosting platform you want but it may complicate integration with some of the add ons.
+Keith, our website is a **NodeJS** app that uses **expressJS** as a router, **mLab MongoDB** as a database, and **Parse Server** (open source “Parse”) as an “api” to our MongoDB database. Parse Server is nice because it does most of the work for us when it comes to managing users, sessions, password resets, and other typical tasks. Also, we are using **Mailgun** to automatically send emails to our users, **Braintree** to process donations, and **GhostPro** for blogging (news articles). We will be using **Digital Ocean** as a host.
 
 ##BRAINTREE (payments)
 
@@ -14,39 +24,8 @@ Here are links to the guide and API (make sure NODE.JS is selected for our serve
 * https://developers.braintreepayments.com/guides/overview
 * https://developers.braintreepayments.com/reference/overview
 
-##HEROKU (host)
-
-Heroku seems like the most convenient hosting platform. It allows seamless integration with add-ons such as mailgun.
-
-You should make your own account. I have no advice on what account level you need – but let's start with the free version while testing, then move up to “hobby” or “standard” when we officially launch. **Follow these steps to get started:**
-
-1. Go to heroku.com, make an account, and then make a new app.
-
-2. Under Deploy, follow the instructions under "install the Heroku CLI" and "Existing Git Repository". These steps allow you to push/deploy our GitHub directory to Heroku using Heroku's command line interface. Ignore the subsections "Create a new Git repository" and "Deploy your application". 
-
-3. Under Resources, go to add ons and:
-  1. add *mLab MongoDB* (get the Sandbox - Free version since I don't see us needing anything higher).
-  2. add *Mailgun* (the Starter - Free version should be sufficient).
-
-4. Under Settings click on "Reveal Config Vars", manually add these variables:
-  1. *APP_ID* - set this to whatever you want. This is what Parse Server uses as a client key to secure the app. Clients will have access to this variable and need to provide it when interacting with our mLab database.
-  2. *SERVER_URL* - set this to the parse mount path: "http://www.streettohomemovement.org/parse" (search for "// Serve the Parse API on the /parse URL prefix" in our codebase to see where this is set)
-  3. *MASTER_KEY* - set this to whatever you want but make sure it is secure, hidden from the public, and hard to guess. This key allows you to override all ACL's in our database and let's you read/write on any database object. 
-  4. *EMAIL_FROM* - I would recommend setting this to: "no-reply@streettohomemovement.org". This is the email address Mailgun will use as the send address when our users get password reset emails, or reminder emails to finish seting their accounts.
-  5. *btMerchantId* - This is the Braintree merchantId.
-  6. *btPublicKey* - This is the Braintree publicKey.
-  7. *btPrivateKey* - This is the Braintree privateKey.
-  
-6. cd locally to the website directory and enter the command ```$ git push heroku master``` into the terminal. This pushes/deploys your local code to Heroku. Heroku is smart and will detect our site is a NodeJS app. Heroku will use our "package.json" file as a starting point - Heroku will automatically install all of the dependencies listed, run the command(s) needed to start the app, etc.
-
-7. Once everything is working, you can change the url to a custom domain (such as streettohomemovement.org) by following [these instructions](https://devcenter.heroku.com/articles/custom-domains).
-
-Here are some reference links:
-* https://devcenter.heroku.com/articles/getting-started-with-nodejs
-* https://devcenter.heroku.com/articles/deploying-a-parse-server-to-heroku
-* https://elements.heroku.com/addons/mailgun
-
-NOTE: If you want to run our site locally (for testing/development) then replace the placeholder passwords in passwords.sample.json with the actual passwords. Then, change the file name from passwords.sample.json to passwords.json.
+##DigitalOcean (host)
+First, [create your account](https://cloud.digitalocean.com/registrations/new), then create a new droplet with nodeJS and Ubuntu 16 preinstalled on it. For now, I would go with the one that costs $5/month since you can always upgrade. Then follow [these instructions](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04) to ssh into the server and create a user account. Then ssh into the server with your newly created user account, install GitHub on the server, and git clone our [site repository](https://github.com/StreetToHomeMovement/site.git) to the server. Then follow [these instructions](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04) to launch the site.
 
 ##PARSE SERVER (database api)
 
@@ -60,10 +39,7 @@ Here are some additional reference links:
 
 ##Ghost (blogging/news)
 
-Unfortunately, according to [their documentation](http://support.ghost.org/deploying-ghost/#manual-setup) many of the Node-specific cloud hosting solutions such as Nodejitsu & Heroku are NOT compatible with Ghost. They will work at first, but they will delete your files and therefore all image uploads and your database will disappear. Heroku supports MySQL so you could use this, but you will still lose any uploaded images.
- Therefore, we will use GhostPro (ghost.org) as a host. This has some benefits – for example, they will take care of updates and security for us beheind the scenes.
-
-Make an account [here](https://ghost.org/) and I will walk you through the rest in person.
+We will be self hosting Ghost on our Digital Ocean server. Here are some [docs](http://docs.ghost.org/). To create new content, or change settings/themes, go to */news/ghost ( i.e. http://www.streettohomemovement.org/news/ghost ).
 
 ##Run Locally
 
